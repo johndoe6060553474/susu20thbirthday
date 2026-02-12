@@ -1,38 +1,48 @@
-diff --git a/index.html b/index.html
-new file mode 100644
-index 0000000000000000000000000000000000000000..bb233b23ae9577a0ba5abeb73e235c7dab3df53d
---- /dev/null
-+++ b/index.html
-@@ -0,0 +1,32 @@
-+<!DOCTYPE html>
-+<html lang="en">
-+  <head>
-+    <meta charset="UTF-8" />
-+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-+    <title>Happy 20th Birthday 💖</title>
-+    <link rel="stylesheet" href="styles.css" />
-+  </head>
-+  <body>
-+    <!-- Canvas layer for lightweight confetti bursts -->
-+    <canvas id="confetti-canvas" aria-hidden="true"></canvas>
-+
-+    <main class="page" role="main">
-+      <header class="intro">
-+        <p class="eyebrow">A love note for your 20th</p>
-+        <h1>Happy Birthday, Beautiful ✨</h1>
-+      </header>
-+
-+      <!-- Heart stage: JS injects 20 photo cards and one center message card -->
-+      <section class="heart-stage" aria-label="20 photos arranged in a heart shape">
-+        <div id="heart-grid" class="heart-grid"></div>
-+      </section>
-+
-+      <section class="actions" aria-label="Birthday surprise">
-+        <button id="surprise-btn" type="button">Surprise Me 💌</button>
-+        <p id="surprise-line" class="surprise-line" aria-live="polite"></p>
-+      </section>
-+    </main>
-+
-+    <script src="script.js"></script>
-+  </body>
-+</html>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>A Love Note for Your 20th</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+
+  <!-- Background canvas for confetti -->
+  <canvas id="confetti-canvas"></canvas>
+
+  <main class="page">
+
+    <!-- Intro Section -->
+    <section class="intro">
+      <h1>A love note for your 20th 💗</h1>
+      <h2>Happy Birthday, Beautiful ✨</h2>
+    </section>
+
+    <!-- Heart Gallery Section -->
+    <section class="heart-section">
+      <div class="heart-stage" id="heart-stage">
+        
+        <!-- Center Romantic Message -->
+        <div class="center-message">
+          <p>
+            20 years of you.<br />
+            20 reasons I adore you.
+          </p>
+        </div>
+
+        <!-- Photos will be dynamically injected here by script.js -->
+      </div>
+    </section>
+
+    <!-- Surprise Button Section -->
+    <section class="surprise-section">
+      <button id="surprise-btn">Surprise Me 💌</button>
+      <p id="surprise-text" class="surprise-text"></p>
+    </section>
+
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>
