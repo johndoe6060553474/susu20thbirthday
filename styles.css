@@ -1,0 +1,230 @@
+diff --git a/styles.css b/styles.css
+new file mode 100644
+index 0000000000000000000000000000000000000000..7c8ee2ae3533c0eaeb8c035c7c2103160ee1454d
+--- /dev/null
++++ b/styles.css
+@@ -0,0 +1,224 @@
++:root {
++  --bg-a: #ffdbe9;
++  --bg-b: #efe2ff;
++  --bg-c: #d9f2ff;
++  --text: #4c2a5f;
++  --accent: #ff4f98;
++  --card: rgba(255, 255, 255, 0.84);
++}
++
++* {
++  box-sizing: border-box;
++}
++
++body {
++  margin: 0;
++  min-height: 100vh;
++  font-family: "Poppins", "Segoe UI", sans-serif;
++  color: var(--text);
++  background: radial-gradient(circle at 20% 12%, #fff6fb 0%, transparent 40%),
++    linear-gradient(140deg, var(--bg-a) 0%, var(--bg-b) 48%, var(--bg-c) 100%);
++}
++
++#confetti-canvas {
++  position: fixed;
++  inset: 0;
++  width: 100%;
++  height: 100%;
++  pointer-events: none;
++  z-index: 2;
++}
++
++.page {
++  position: relative;
++  max-width: 1100px;
++  margin: 0 auto;
++  padding: 1.25rem 1rem 2rem;
++  z-index: 3;
++}
++
++.intro {
++  text-align: center;
++  margin-bottom: 0.7rem;
++}
++
++.eyebrow {
++  margin: 0;
++  letter-spacing: 0.2em;
++  text-transform: uppercase;
++  font-size: 0.74rem;
++  opacity: 0.8;
++}
++
++h1 {
++  margin: 0.35rem 0 0;
++  font-size: clamp(1.5rem, 4.6vw, 2.7rem);
++  font-weight: 700;
++}
++
++.heart-stage {
++  /* Fixed-ish stage keeps heart shape stable while still responsive */
++  position: relative;
++  width: min(96vw, 980px);
++  height: clamp(500px, 76vw, 840px);
++  margin: 0.2rem auto 1rem;
++  z-index: 1;
++}
++
++.heart-grid {
++  position: relative;
++  width: 100%;
++  height: 100%;
++}
++
++.photo-slot {
++  /* JS sets --x and --y percentages for the heart coordinates */
++  position: absolute;
++  left: var(--x);
++  top: var(--y);
++  width: clamp(78px, 10.2vw, 132px);
++  aspect-ratio: 1;
++  border-radius: 18px;
++  overflow: hidden;
++  transform: translate(-50%, -50%) rotate(var(--r, 0deg));
++  border: 3px solid rgba(255, 255, 255, 0.94);
++  box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.25), 0 10px 28px rgba(100, 63, 128, 0.28);
++  transition: box-shadow 220ms ease;
++  background: #f8ecff;
++  opacity: 0;
++}
++
++.photo-slot.show {
++  opacity: 1;
++}
++
++.photo-inner {
++  width: 100%;
++  height: 100%;
++  transition: transform 220ms ease;
++}
++
++.photo-slot img {
++  width: 100%;
++  height: 100%;
++  object-fit: cover;
++  display: block;
++}
++
++.photo-caption {
++  position: absolute;
++  bottom: 0;
++  left: 0;
++  width: 100%;
++  padding: 8px;
++  font-size: clamp(0.62rem, 1.3vw, 0.85rem);
++  font-weight: 600;
++  text-align: center;
++  background: rgba(0, 0, 0, 0.45);
++  color: white;
++  opacity: 0;
++  transform: translateY(100%);
++  transition: opacity 220ms ease, transform 220ms ease;
++  border-radius: 0 0 16px 16px;
++  pointer-events: none;
++}
++
++.photo-slot:hover,
++.photo-slot:focus-within {
++  box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.45), 0 14px 34px rgba(100, 63, 128, 0.36);
++  z-index: 4;
++}
++
++.photo-slot:hover .photo-inner,
++.photo-slot:focus-within .photo-inner {
++  transform: scale(1.08);
++}
++
++.photo-slot:hover .photo-caption,
++.photo-slot:focus-within .photo-caption {
++  opacity: 1;
++  transform: translateY(0);
++}
++
++.center-message {
++  /* Romantic center statement anchored inside the heart */
++  position: absolute;
++  left: 50%;
++  top: 51%;
++  transform: translate(-50%, -50%);
++  width: min(52vw, 340px);
++  border-radius: 24px;
++  padding: 1rem 1.1rem;
++  text-align: center;
++  font-family: "Playfair Display", Georgia, serif;
++  font-size: clamp(1.1rem, 2.4vw, 1.75rem);
++  line-height: 1.35;
++  color: #fff;
++  background: var(--card);
++  border: 1px solid rgba(255, 255, 255, 0.75);
++  box-shadow: 0 14px 34px rgba(95, 54, 120, 0.2);
++  text-shadow: 0 0 10px rgba(255, 182, 193, 0.4);
++  animation: pulseGlow 3s ease-in-out infinite;
++  z-index: 3;
++}
++
++@keyframes pulseGlow {
++  0% {
++    text-shadow: 0 0 10px rgba(255, 182, 193, 0.4);
++  }
++  50% {
++    text-shadow: 0 0 25px rgba(255, 182, 193, 0.8);
++  }
++  100% {
++    text-shadow: 0 0 10px rgba(255, 182, 193, 0.4);
++  }
++}
++
++.actions {
++  text-align: center;
++  position: relative;
++  z-index: 8;
++}
++
++#surprise-btn {
++  border: 0;
++  border-radius: 999px;
++  background: var(--accent);
++  color: #fff;
++  padding: 0.75rem 1.25rem;
++  font: inherit;
++  font-weight: 700;
++  cursor: pointer;
++  transition: transform 180ms ease, filter 180ms ease;
++}
++
++#surprise-btn:hover {
++  transform: translateY(-2px);
++  filter: brightness(1.04);
++}
++
++.surprise-line {
++  min-height: 1.5em;
++  margin: 0.7rem auto 0;
++  font-weight: 600;
++  max-width: 60ch;
++  opacity: 0;
++  transform: translateY(10px);
++  transition: opacity 260ms ease, transform 260ms ease;
++}
++
++.surprise-line.show {
++  opacity: 1;
++  transform: translateY(0);
++}
++
++@media (max-width: 640px) {
++  .heart-stage {
++    height: clamp(540px, 150vw, 760px);
++  }
++
++  .center-message {
++    width: min(72vw, 300px);
++    top: 53%;
++  }
++}
