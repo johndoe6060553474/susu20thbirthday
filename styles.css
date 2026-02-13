@@ -9,11 +9,9 @@ body {
   height: 100vh;
   overflow: hidden;
   background: radial-gradient(circle at center, #ffe6f0 0%, #ffb6d9 40%, #ff85c1 100%);
-  display: flex;
-  align-items: center;
-  justify-content: center;
   color: white;
 }
+
 
 /* Soft animated glow */
 .glow-bg {
@@ -86,12 +84,12 @@ h1 {
 .screen {
   position: fixed;
   inset: 0;
-  display: flex;                /* 🔥 ADD THIS */
-  justify-content: center;      /* 🔥 ADD THIS */
-  align-items: center;          /* 🔥 ADD THIS */
-  transition: opacity 1s ease;
-  z-index: 100;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: opacity 0.8s ease;
 }
+
 
 
 .hidden {
@@ -158,10 +156,12 @@ h1 {
 
 .ribbon-vertical {
   width: 20px;
-  height: 100%;
+  height: 180px; /* match gift-box height */
   left: 50%;
+  top: 0;
   transform: translateX(-50%);
 }
+
 
 .ribbon-horizontal {
   height: 20px;
@@ -189,5 +189,13 @@ h1 {
 
 .open .box {
   box-shadow: 0 0 80px rgba(255,255,255,0.9);
+}
+
+#countdown-screen {
+  background: radial-gradient(circle at center, #ffe6f0 0%, #ffb6d9 40%, #ff85c1 100%);
+}
+
+#main-page {
+  background: radial-gradient(circle at center, #ffdde9, #ff6fa5);
 }
 
