@@ -1,12 +1,10 @@
-// ✅ Keep your provided date, only change time to 11:36:00
-const targetDate = new Date("February 13, 2026 12:00:00").getTime();
+const targetDate = new Date("February 13, 2026 12:20:00").getTime();
 
 const daysEl = document.getElementById("days");
 const hoursEl = document.getElementById("hours");
 const minutesEl = document.getElementById("minutes");
 const secondsEl = document.getElementById("seconds");
 
-// Screen elements (for Phase 2 + 3)
 const countdownScreen = document.getElementById("countdown-screen");
 const giftScreen = document.getElementById("gift-screen");
 const mainPage = document.getElementById("main-page");
@@ -16,13 +14,14 @@ function updateCountdown() {
   const now = new Date().getTime();
   const distance = targetDate - now;
 
-  // ⬇️ When countdown finishes
   if (distance <= 0) {
-    countdownScreen?.classList.remove("active");
-    countdownScreen?.classList.add("hidden");
+    clearInterval(timer);
 
-    giftScreen?.classList.remove("hidden");
-    giftScreen?.classList.add("active");
+    countdownScreen.classList.remove("active");
+    countdownScreen.classList.add("hidden");
+
+    giftScreen.classList.remove("hidden");
+    giftScreen.classList.add("active");
 
     return;
   }
@@ -38,21 +37,24 @@ function updateCountdown() {
   secondsEl.textContent = String(seconds).padStart(2, "0");
 }
 
-setInterval(updateCountdown, 1000);
+const timer = setInterval(updateCountdown, 1000);
 updateCountdown();
 
-
-// 🎁 Gift box opening logic
-giftBox?.addEventListener("click", () => {
+giftBox.addEventListener("click", function () {
   giftBox.classList.add("open");
 
-  setTimeout(() => {
-    giftScreen?.classList.remove("active");
-    giftScreen?.classList.add("hidden");
+  setTimeout(function () {
+    giftScreen.classList.remove("active");
+    giftScreen.classList.add("hidden");
 
-    mainPage?.classList.remove("hidden");
-    mainPage?.classList.add("active");
-  }, 2000);
+    setTimeout(function () {
+      mainPage.classList.remove("hidden");
+      mainPage.classList.add("active");
+    }, 300);
+
+  }, 1200);
 });
+
+
 
 
