@@ -8,38 +8,78 @@
 </head>
 <body>
 
-  <div class="countdown-page">
-    <div class="glow-bg"></div>
+  <!-- ========================= -->
+  <!-- PHASE 1: COUNTDOWN SCREEN -->
+  <!-- ========================= -->
+  <section id="countdown-screen" class="screen active">
 
-    <div class="content">
-      <h1>Something beautiful is coming ✨</h1>
-      <p class="subtitle">Counting down to March 7, 2026</p>
+    <div class="countdown-page">
+      <div class="glow-bg"></div>
 
-      <div class="timer">
-        <div class="time-box">
-          <span id="days">00</span>
-          <small>Days</small>
+      <div class="content">
+        <h1>Something beautiful is coming ✨</h1>
+        <p class="subtitle">Counting down to March 7, 2026</p>
+
+        <div class="timer">
+          <div class="time-box">
+            <span id="days">00</span>
+            <small>Days</small>
+          </div>
+          <div class="time-box">
+            <span id="hours">00</span>
+            <small>Hours</small>
+          </div>
+          <div class="time-box">
+            <span id="minutes">00</span>
+            <small>Minutes</small>
+          </div>
+          <div class="time-box">
+            <span id="seconds">00</span>
+            <small>Seconds</small>
+          </div>
         </div>
-        <div class="time-box">
-          <span id="hours">00</span>
-          <small>Hours</small>
-        </div>
-        <div class="time-box">
-          <span id="minutes">00</span>
-          <small>Minutes</small>
-        </div>
-        <div class="time-box">
-          <span id="seconds">00</span>
-          <small>Seconds</small>
-        </div>
+
+        <p class="romantic-note">
+          Until the world celebrates you turning 20 💗
+        </p>
+      </div>
+    </div>
+
+  </section>
+
+
+  <!-- ========================= -->
+  <!-- PHASE 2: GIFT BOX SCREEN -->
+  <!-- ========================= -->
+  <section id="gift-screen" class="screen hidden">
+
+    <div class="gift-container">
+      <div class="gift-box" id="giftBox">
+        <div class="lid"></div>
+        <div class="box"></div>
+        <div class="ribbon-vertical"></div>
+        <div class="ribbon-horizontal"></div>
       </div>
 
-      <p class="romantic-note">
-        Until the world celebrates you turning 20 💗
-      </p>
+      <p class="tap-text">Tap to Open Your Surprise 💌</p>
     </div>
-  </div>
+
+  </section>
+
+
+  <!-- ========================= -->
+  <!-- PHASE 3: MAIN CELEBRATION -->
+  <!-- ========================= -->
+  <section id="main-page" class="screen hidden">
+
+    <!-- 👇 PASTE YOUR EXISTING HEART GALLERY PAGE HERE 👇 -->
+    <h1>Happy 20th Birthday 💗</h1>
+    <p>Your heart gallery will appear here.</p>
+
+  </section>
+
+  <canvas id="confetti"></canvas>
 
   <script src="script.js"></script>
+
 </body>
-</html>
