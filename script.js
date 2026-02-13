@@ -1,5 +1,5 @@
 // ✅ Keep your provided date, only change time to 11:36:00
-const targetDate = new Date("February 13, 2026 11:42:00").getTime();
+const targetDate = new Date("February 13, 2026 12:00:00").getTime();
 
 const daysEl = document.getElementById("days");
 const hoursEl = document.getElementById("hours");
@@ -54,4 +54,5 @@ giftBox?.addEventListener("click", () => {
     mainPage?.classList.add("active");
   }, 2000);
 });
+
 
