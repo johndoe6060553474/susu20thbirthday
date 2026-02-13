@@ -1,17 +1,29 @@
-const targetDate = new Date("March 7, 2026 00:00:00").getTime();
+// ✅ Keep your provided date, only change time to 11:36:00
+const targetDate = new Date("February 13, 2026 11:37:00").getTime();
 
 const daysEl = document.getElementById("days");
 const hoursEl = document.getElementById("hours");
 const minutesEl = document.getElementById("minutes");
 const secondsEl = document.getElementById("seconds");
 
+// Screen elements (for Phase 2 + 3)
+const countdownScreen = document.getElementById("countdown-screen");
+const giftScreen = document.getElementById("gift-screen");
+const mainPage = document.getElementById("main-page");
+const giftBox = document.getElementById("giftBox");
+
 function updateCountdown() {
   const now = new Date().getTime();
   const distance = targetDate - now;
 
+  // ⬇️ When countdown finishes
   if (distance <= 0) {
-    document.querySelector(".timer").innerHTML =
-      "<h2>It’s her day 💗</h2>";
+    countdownScreen?.classList.remove("active");
+    countdownScreen?.classList.add("hidden");
+
+    giftScreen?.classList.remove("hidden");
+    giftScreen?.classList.add("active");
+
     return;
   }
 
@@ -28,3 +40,17 @@ function updateCountdown() {
 
 setInterval(updateCountdown, 1000);
 updateCountdown();
+
+
+// 🎁 Gift box opening logic
+giftBox?.addEventListener("click", () => {
+  giftBox.classList.add("open");
+
+  setTimeout(() => {
+    giftScreen?.classList.remove("active");
+    giftScreen?.classList.add("hidden");
+
+    mainPage?.classList.remove("hidden");
+    mainPage?.classList.add("active");
+  }, 2000);
+});
