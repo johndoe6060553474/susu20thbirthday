@@ -45,25 +45,6 @@ function showGiftScreen() {
   countdownScreen.classList.replace("active", "hidden");
   giftScreen.classList.replace("hidden", "active");
 }
-
-// --- GIFT BOX EVENT ---
-giftBox.addEventListener("click", function () {
-  this.classList.add("open");
-
-  // Create heart rain effect
-  for (let i = 0; i < 50; i++) {
-    setTimeout(createHeartDrop, i * 100);
-  }
-
-  // Move to Main Page after animation
-  setTimeout(() => {
-    giftScreen.classList.replace("active", "hidden");
-    mainPage.classList.replace("hidden", "active");
-    // Enable scrolling on main page
-    document.body.style.overflow = "auto";
-  }, 3000);
-});
-
 // --- HEART RAIN EFFECT ---
 function createHeartDrop() {
   const heart = document.createElement("div");
@@ -101,26 +82,24 @@ function toggleSecret() {
 }
 
 const bgMusic = document.getElementById("bgMusic");
-bgMusic.volume = 0.3; // softer romantic volume
+bgMusic.volume = 0.3;
 
 giftBox.addEventListener("click", function () {
+  // Start music
   bgMusic.currentTime = 0;
-bgMusic.play().catch(() => {});
-
   bgMusic.play().catch(() => {});
-  
+
   this.classList.add("open");
 
+  // Heart rain
   for (let i = 0; i < 50; i++) {
     setTimeout(createHeartDrop, i * 100);
   }
 
+  // Go to main page
   setTimeout(() => {
     giftScreen.classList.replace("active", "hidden");
     mainPage.classList.replace("hidden", "active");
     document.body.style.overflow = "auto";
   }, 3000);
 });
-bgMusic.volume = 0.3; // 30% volume
-
-
