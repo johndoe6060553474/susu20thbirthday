@@ -98,15 +98,20 @@ h1 { font-size: 2.2rem; margin-bottom: 10px; }
 
 /* --- HEART FRAME LAYOUT --- */
 .heart-frame-layout {
-  display: grid;
+  display: grid;                         
   grid-template-columns: repeat(7, 1fr);
-  grid-template-rows: repeat(8, 1fr); /* 8 rows for the heart tip */
-  gap: 8px;
+  grid-template-rows: repeat(8, 1fr);
+  gap: 10px;
+
+  aspect-ratio: 7 / 8;                   
   width: 100%;
   max-width: 550px;
-  margin: 20px auto;
+
+  margin: 40px auto;
   position: relative;
 }
+
+
 
 /* Central Photo (Large) */
 .center-photo {
@@ -212,3 +217,4 @@ h1 { font-size: 2.2rem; margin-bottom: 10px; }
   align-items: center;
 }
 .lightbox img { max-width: 90%; max-height: 80%; border: 5px solid white; }
+
