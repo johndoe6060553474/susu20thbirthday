@@ -14,29 +14,25 @@ body {
 
 
 /* --- SCREEN CONTROLS --- */
-.screen {
-  min-height: auto;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  overflow-y: auto;
-  padding: 0 20px;   
-}
-
 
 #main-page {
   padding: 10px 20px 40px 20px;
 }
 
 
-.hidden {
-  opacity: 0;
-  pointer-events: none;
+.screen {
+  display: none;
+  min-height: 100vh;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px;
 }
 
-.active {
-  opacity: 1;
+.screen.active {
+  display: flex;
 }
+
+
 
 /* --- PHASE 1: COUNTDOWN STYLE --- */
 #countdown-screen {
@@ -49,7 +45,7 @@ body {
 }
 
 #main-page {
-  min-height: auto;
+  min-height: 100vh;
   background: linear-gradient(135deg, #ffe6f0, #ffd6ec, #ffc2e2);
   position: relative;
 }
@@ -293,5 +289,6 @@ h1 { font-size: 2.2rem; margin-bottom: 10px; }
 .birthday-message p {
   font-size: 1.3rem;
 }
+
 
 
