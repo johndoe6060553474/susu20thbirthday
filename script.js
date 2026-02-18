@@ -100,7 +100,27 @@ function toggleSecret() {
   secret.classList.toggle("show");
 }
 
+const bgMusic = document.getElementById("bgMusic");
+bgMusic.volume = 0.3; // softer romantic volume
 
+giftBox.addEventListener("click", function () {
+  bgMusic.currentTime = 0;
+bgMusic.play().catch(() => {});
 
+  bgMusic.play().catch(() => {});
+  
+  this.classList.add("open");
+
+  for (let i = 0; i < 50; i++) {
+    setTimeout(createHeartDrop, i * 100);
+  }
+
+  setTimeout(() => {
+    giftScreen.classList.replace("active", "hidden");
+    mainPage.classList.replace("hidden", "active");
+    document.body.style.overflow = "auto";
+  }, 3000);
+});
+bgMusic.volume = 0.3; // 30% volume
 
 
