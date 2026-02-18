@@ -7,10 +7,10 @@
 }
 
 body {
-  height: 100vh;
-  overflow: hidden; /* Prevents scroll during countdown */
+  min-height: 100vh;
   background: #ffb6d9;
 }
+
 
 /* --- SCREEN CONTROLS --- */
 .screen {
@@ -19,9 +19,9 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
-  transition: opacity 0.8s ease;
-  z-index: 10;
+  overflow-y: auto;   
 }
+
 
 .hidden {
   opacity: 0;
@@ -217,4 +217,15 @@ h1 { font-size: 2.2rem; margin-bottom: 10px; }
   align-items: center;
 }
 .lightbox img { max-width: 90%; max-height: 80%; border: 5px solid white; }
+.gallery-container {
+  width: 100%;
+  max-width: 900px;
+  text-align: center;
+}
+.gallery-title {
+  margin-top: 40px;
+  margin-bottom: 20px;
+  color: white;
+}
+
 
