@@ -95,6 +95,11 @@ function openLightbox(element) {
 function closeLightbox() {
   document.getElementById("lightbox").style.display = "none";
 }
+function toggleSecret() {
+  const secret = document.getElementById("burmese-secret");
+  secret.classList.toggle("hidden");
+}
+
 
 
 
