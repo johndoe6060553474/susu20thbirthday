@@ -97,8 +97,9 @@ function closeLightbox() {
 }
 function toggleSecret() {
   const secret = document.getElementById("burmese-secret");
-  secret.classList.toggle("hidden");
+  secret.classList.toggle("show");
 }
+
 
 
 
