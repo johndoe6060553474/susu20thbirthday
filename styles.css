@@ -3,23 +3,24 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
 }
+
 
 body {
   min-height: 100vh;
   background: #ffb6d9;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
 }
 
 
 /* --- SCREEN CONTROLS --- */
 .screen {
-  position: fixed;
-  inset: 0;
+  min-height: 100vh;
   display: flex;
-  justify-content: center;
+  flex-direction: column;
   align-items: center;
-  overflow-y: auto;   
+  overflow-y: auto;
+  padding: 40px 20px;
 }
 
 
@@ -228,4 +229,53 @@ h1 { font-size: 2.2rem; margin-bottom: 10px; }
   color: white;
 }
 
+.birthday-message {
+  max-width: 850px;
+  margin: 80px auto 50px auto;
+  padding: 60px 45px;
 
+  background: #fffdf9;
+  border-radius: 25px;
+
+  box-shadow: 0 25px 50px rgba(0,0,0,0.15);
+
+  color: #5a4a4a;
+  text-align: center;
+  line-height: 2;
+  letter-spacing: 0.5px;
+
+  font-family: 'Dancing Script', cursive;
+  font-size: 1.35rem;
+
+  position: relative;
+  opacity: 0;
+  transform: translateY(20px);
+  animation: fadeInCard 1.5s ease forwards;
+}
+
+@keyframes fadeInCard {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.birthday-message::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: 25px;
+  box-shadow: inset 0 0 40px rgba(255, 182, 217, 0.2);
+  pointer-events: none;
+}
+
+.birthday-message h2 {
+  font-size: 2.8rem;
+  margin-bottom: 35px;
+  color: #e754a4;
+  font-weight: 700;
+}
+
+.birthday-message p {
+  font-size: 1.3rem;
+}
