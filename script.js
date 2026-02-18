@@ -1,6 +1,6 @@
 // --- CONFIGURATION ---
 // Set the target date: March 7, 2026
-const targetDate = new Date("March 7, 2026 00:00:00").getTime();
+const targetDate = new Date("February 18, 2026 21:45:00").getTime();
 
 // --- ELEMENTS ---
 const daysEl = document.getElementById("days");
@@ -96,3 +96,4 @@ function openLightbox(element) {
 function closeLightbox() {
   document.getElementById("lightbox").style.display = "none";
 }
+
