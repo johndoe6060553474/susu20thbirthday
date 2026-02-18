@@ -15,7 +15,7 @@ body {
 
 /* --- SCREEN CONTROLS --- */
 .screen {
-  min-height: 100vh;
+  min-height: auto;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -38,7 +38,16 @@ body {
   background: radial-gradient(circle at center, #ffe6f0 0%, #ffb6d9 40%, #ff85c1 100%);
   color: white;
 }
+#countdown-screen,
+#gift-screen {
+  min-height: 100vh;
+}
 
+#main-page {
+  min-height: auto;
+  background: linear-gradient(135deg, #ffe6f0, #ffd6ec, #ffc2e2);
+  position: relative;
+}
 .glow-bg {
   position: absolute;
   width: 600px;
@@ -231,7 +240,7 @@ h1 { font-size: 2.2rem; margin-bottom: 10px; }
 
 .birthday-message {
   max-width: 850px;
-  margin: 80px auto 50px auto;
+ margin: 40px auto 50px auto;
   padding: 60px 45px;
 
   background: #fffdf9;
@@ -279,3 +288,4 @@ h1 { font-size: 2.2rem; margin-bottom: 10px; }
 .birthday-message p {
   font-size: 1.3rem;
 }
+
