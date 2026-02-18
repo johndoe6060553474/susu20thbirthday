@@ -39,33 +39,43 @@
   </section>
 
 
-  <section id="main-page" class="screen hidden">
+ <section id="main-page" class="screen hidden">
     <div class="gallery-container">
       <h1 class="gallery-title">Happy 20th Birthday, Su Su! 🎂</h1>
       
-      <div class="heart-grid">
-        <div class="photo-slot" onclick="openLightbox(this)"><img src="photo1.jpg" alt="Memory"></div>
-        <div class="photo-slot" onclick="openLightbox(this)"><img src="photo2.jpg" alt="Memory"></div>
-        <div class="photo-slot" onclick="openLightbox(this)"><img src="photo3.jpg" alt="Memory"></div>
-        <div class="photo-slot" onclick="openLightbox(this)"><img src="photo4.jpg" alt="Memory"></div>
-        <div class="photo-slot" onclick="openLightbox(this)"><img src="photo5.jpg" alt="Memory"></div>
-        <div class="photo-slot" onclick="openLightbox(this)"><img src="photo6.jpg" alt="Memory"></div>
-        <div class="photo-slot" onclick="openLightbox(this)"><img src="photo7.jpg" alt="Memory"></div>
-        <div class="photo-slot" onclick="openLightbox(this)"><img src="photo8.jpg" alt="Memory"></div>
-        <div class="photo-slot" onclick="openLightbox(this)"><img src="photo9.jpg" alt="Memory"></div>
-        <div class="photo-slot" onclick="openLightbox(this)"><img src="photo10.jpg" alt="Memory"></div>
-        <div class="photo-slot" onclick="openLightbox(this)"><img src="photo11.jpg" alt="Memory"></div>
-        <div class="photo-slot" onclick="openLightbox(this)"><img src="photo12.jpg" alt="Memory"></div>
-        <div class="photo-slot" onclick="openLightbox(this)"><img src="photo13.jpg" alt="Memory"></div>
-        <div class="photo-slot" onclick="openLightbox(this)"><img src="photo14.jpg" alt="Memory"></div>
-        <div class="photo-slot" onclick="openLightbox(this)"><img src="photo15.jpg" alt="Memory"></div>
-        <div class="photo-slot" onclick="openLightbox(this)"><img src="photo16.jpg" alt="Memory"></div>
-        <div class="photo-slot" onclick="openLightbox(this)"><img src="photo17.jpg" alt="Memory"></div>
-        <div class="photo-slot" onclick="openLightbox(this)"><img src="photo18.jpg" alt="Memory"></div>
-        <div class="photo-slot" onclick="openLightbox(this)"><img src="photo19.jpg" alt="Memory"></div>
+      <div class="instruction-box">
+        <p class="tap-hint">
+          "Within these frames lie the reasons why my heart skips a beat whenever you're in my sight."
+        </p>
+        <p class="sub-hint">(Go ahead, tap them... 😉)</p>
+        <p class="scroll-hint">Scroll down for something special... ↓</p>
       </div>
 
-      <p class="scroll-down-text">Scroll down to see why I love you... ↓</p>
+      <div class="heart-frame-layout">
+        <div class="center-photo" onclick="openLightbox(this)">
+          <img src="main.jpg" alt="Special Memory">
+        </div>
+
+        <div class="frame-photo" onclick="openLightbox(this)"><img src="photo1.jpg"></div>
+        <div class="frame-photo" onclick="openLightbox(this)"><img src="photo2.jpg"></div>
+        <div class="frame-photo" onclick="openLightbox(this)"><img src="photo3.jpg"></div>
+        <div class="frame-photo" onclick="openLightbox(this)"><img src="photo4.jpg"></div>
+        <div class="frame-photo" onclick="openLightbox(this)"><img src="photo5.jpg"></div>
+        <div class="frame-photo" onclick="openLightbox(this)"><img src="photo6.jpg"></div>
+        <div class="frame-photo" onclick="openLightbox(this)"><img src="photo7.jpg"></div>
+        <div class="frame-photo" onclick="openLightbox(this)"><img src="photo8.jpg"></div>
+        <div class="frame-photo" onclick="openLightbox(this)"><img src="photo9.jpg"></div>
+        <div class="frame-photo" onclick="openLightbox(this)"><img src="photo10.jpg"></div>
+        <div class="frame-photo" onclick="openLightbox(this)"><img src="photo11.jpg"></div>
+        <div class="frame-photo" onclick="openLightbox(this)"><img src="photo12.jpg"></div>
+        <div class="frame-photo" onclick="openLightbox(this)"><img src="photo13.jpg"></div>
+        <div class="frame-photo" onclick="openLightbox(this)"><img src="photo14.jpg"></div>
+        <div class="frame-photo" onclick="openLightbox(this)"><img src="photo15.jpg"></div>
+        <div class="frame-photo" onclick="openLightbox(this)"><img src="photo16.jpg"></div>
+        <div class="frame-photo" onclick="openLightbox(this)"><img src="photo17.jpg"></div>
+        <div class="frame-photo" onclick="openLightbox(this)"><img src="photo18.jpg"></div>
+        <div class="frame-photo" onclick="openLightbox(this)"><img src="photo19.jpg"></div>
+      </div>
     </div>
 
     <div id="lightbox" class="lightbox" onclick="closeLightbox()">
@@ -76,3 +86,4 @@
   <script src="script.js"></script>
 </body>
 </html>
+
