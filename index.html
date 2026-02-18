@@ -1,58 +1,32 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Counting Down To You</title>
-  <link rel="stylesheet" href="styles.css" />
+  <link rel="stylesheet" href="styles.css">
 </head>
 <body>
 
-  <!-- ========================= -->
-  <!-- PHASE 1: COUNTDOWN SCREEN -->
-  <!-- ========================= -->
   <section id="countdown-screen" class="screen active">
+    <div class="glow-bg"></div>
+    <div class="content">
+      <h1>Something beautiful is coming ✨</h1>
+      <p class="subtitle">Counting down to March 7, 2026</p>
 
-    <div class="countdown-page">
-      <div class="glow-bg"></div>
-
-      <div class="content">
-        <h1>Something beautiful is coming ✨</h1>
-        <p class="subtitle">Counting down to March 7, 2026</p>
-
-        <div class="timer">
-          <div class="time-box">
-            <span id="days">00</span>
-            <small>Days</small>
-          </div>
-          <div class="time-box">
-            <span id="hours">00</span>
-            <small>Hours</small>
-          </div>
-          <div class="time-box">
-            <span id="minutes">00</span>
-            <small>Minutes</small>
-          </div>
-          <div class="time-box">
-            <span id="seconds">00</span>
-            <small>Seconds</small>
-          </div>
-        </div>
-
-        <p class="romantic-note">
-          Until the world celebrates you turning 20 💗
-        </p>
+      <div class="timer">
+        <div class="time-box"><span id="days">00</span><small>Days</small></div>
+        <div class="time-box"><span id="hours">00</span><small>Hours</small></div>
+        <div class="time-box"><span id="minutes">00</span><small>Minutes</small></div>
+        <div class="time-box"><span id="seconds">00</span><small>Seconds</small></div>
       </div>
-    </div>
 
+      <p class="romantic-note">Until the world celebrates you turning 20 💗</p>
+    </div>
   </section>
 
 
-  <!-- ========================= -->
-  <!-- PHASE 2: GIFT BOX SCREEN -->
-  <!-- ========================= -->
   <section id="gift-screen" class="screen hidden">
-
     <div class="gift-container">
       <div class="gift-box" id="giftBox">
         <div class="lid"></div>
@@ -60,26 +34,45 @@
         <div class="ribbon-vertical"></div>
         <div class="ribbon-horizontal"></div>
       </div>
-
       <p class="tap-text">Tap to Open Your Surprise 💌</p>
     </div>
-
   </section>
 
 
-  <!-- ========================= -->
-  <!-- PHASE 3: MAIN CELEBRATION -->
-  <!-- ========================= -->
   <section id="main-page" class="screen hidden">
+    <div class="gallery-container">
+      <h1 class="gallery-title">Happy 20th Birthday, Su Su! 🎂</h1>
+      
+      <div class="heart-grid">
+        <div class="photo-slot" onclick="openLightbox(this)"><img src="photo1.jpg" alt="Memory"></div>
+        <div class="photo-slot" onclick="openLightbox(this)"><img src="photo2.jpg" alt="Memory"></div>
+        <div class="photo-slot" onclick="openLightbox(this)"><img src="photo3.jpg" alt="Memory"></div>
+        <div class="photo-slot" onclick="openLightbox(this)"><img src="photo4.jpg" alt="Memory"></div>
+        <div class="photo-slot" onclick="openLightbox(this)"><img src="photo5.jpg" alt="Memory"></div>
+        <div class="photo-slot" onclick="openLightbox(this)"><img src="photo6.jpg" alt="Memory"></div>
+        <div class="photo-slot" onclick="openLightbox(this)"><img src="photo7.jpg" alt="Memory"></div>
+        <div class="photo-slot" onclick="openLightbox(this)"><img src="photo8.jpg" alt="Memory"></div>
+        <div class="photo-slot" onclick="openLightbox(this)"><img src="photo9.jpg" alt="Memory"></div>
+        <div class="photo-slot" onclick="openLightbox(this)"><img src="photo10.jpg" alt="Memory"></div>
+        <div class="photo-slot" onclick="openLightbox(this)"><img src="photo11.jpg" alt="Memory"></div>
+        <div class="photo-slot" onclick="openLightbox(this)"><img src="photo12.jpg" alt="Memory"></div>
+        <div class="photo-slot" onclick="openLightbox(this)"><img src="photo13.jpg" alt="Memory"></div>
+        <div class="photo-slot" onclick="openLightbox(this)"><img src="photo14.jpg" alt="Memory"></div>
+        <div class="photo-slot" onclick="openLightbox(this)"><img src="photo15.jpg" alt="Memory"></div>
+        <div class="photo-slot" onclick="openLightbox(this)"><img src="photo16.jpg" alt="Memory"></div>
+        <div class="photo-slot" onclick="openLightbox(this)"><img src="photo17.jpg" alt="Memory"></div>
+        <div class="photo-slot" onclick="openLightbox(this)"><img src="photo18.jpg" alt="Memory"></div>
+        <div class="photo-slot" onclick="openLightbox(this)"><img src="photo19.jpg" alt="Memory"></div>
+      </div>
 
-    <!-- 👇 PASTE YOUR EXISTING HEART GALLERY PAGE HERE 👇 -->
-    <h1>Happy 20th Birthday 💗</h1>
-    <p>Your heart gallery will appear here.</p>
+      <p class="scroll-down-text">Scroll down to see why I love you... ↓</p>
+    </div>
 
+    <div id="lightbox" class="lightbox" onclick="closeLightbox()">
+      <img id="lightbox-img" src="" alt="Zoomed View">
+    </div>
   </section>
-
-  <canvas id="confetti"></canvas>
 
   <script src="script.js"></script>
-
 </body>
+</html>
