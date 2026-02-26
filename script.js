@@ -508,6 +508,7 @@ function selectVersion(choice) {
           // Countdown
           const TARGET = new Date("February 7, 2026 00:00:00").getTime();
           function pad(n) { return String(n).padStart(2,'0'); }
+          let timer;
           function tick() {
             const dist = TARGET - Date.now();
             if (dist <= 0) {
@@ -520,8 +521,8 @@ function selectVersion(choice) {
             document.getElementById('hbMinutes').textContent = pad(Math.floor((dist%36e5)/6e4));
             document.getElementById('hbSeconds').textContent = pad(Math.floor((dist%6e4)/1e3));
           }
+          timer = setInterval(tick, 1000);
           tick();
-          const timer = setInterval(tick, 1000);
 
           function showHeart() {
             document.getElementById('hbCountdown').classList.remove('active');
