@@ -1,4 +1,41 @@
 <!DOCTYPE html>
+<section id="entry-gate" class="gate-section">
+
+  <!-- STEP 1 -->
+  <div id="step1">
+    <h2>This space is dedicated to a very special person.</h2>
+    <p>Are you sure you are <strong>Su Su Nyein Kyaw</strong>?</p>
+    <button onclick="confirmIdentity(true)">Yes</button>
+    <button onclick="confirmIdentity(false)">No</button>
+  </div>
+
+  <!-- STEP 2 -->
+  <div id="step2" class="hidden">
+    <p>To ensure your privacy, please enter your <strong>Roll Number</strong> to continue.</p>
+    <input type="number" id="rollInput" placeholder="Enter Number">
+    <button onclick="verifyRoll()">Submit</button>
+    <p id="rollError"></p>
+  </div>
+
+  <!-- STEP 3 -->
+  <div id="step3" class="hidden">
+    <p>Before we reveal the surprise, may I ask...</p>
+    <p><strong>Are you still single or in a relationship now?</strong></p>
+    <button onclick="selectVersion('single')">Single</button>
+    <button onclick="selectVersion('relationship')">In a Relationship</button>
+  </div>
+
+</section>
+
+<!-- HEARTFELT VERSION -->
+<div id="heartfelt-version" class="hidden">
+  <!-- Your ENTIRE original romantic page content goes here -->
+</div>
+
+<!-- ALTERNATE VERSION -->
+<div id="alternate-version" class="hidden">
+  <h2>...</h2>
+</div>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
@@ -184,6 +221,7 @@
 <script src="script.js"></script>
 </body>
 </html>
+
 
 
 
