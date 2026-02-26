@@ -243,12 +243,22 @@ function toggleIdentity() {
     reveal.classList.remove("hidden");
     identityRevealed = true;
   } else {
-    // Second tap: hide only the ECG, box 2 stays
+    // Second tap: hide ECG and box 2 together
     const svg = document.getElementById("ecgSvg");
     if (svg) {
       svg.style.transition = "opacity 0.6s ease";
       svg.style.opacity = "0";
       setTimeout(() => svg.classList.remove("active"), 650);
+    }
+    const box2 = document.getElementById("spoilerBox2");
+    if (box2) {
+      box2.style.transition = "opacity 0.6s ease";
+      box2.style.opacity = "0";
+      setTimeout(() => {
+        box2.classList.remove("active", "visible");
+        box2.style.opacity = "";
+        document.getElementById("identity-reveal").classList.add("hidden");
+      }, 650);
     }
     identityRevealed = false;
   }
