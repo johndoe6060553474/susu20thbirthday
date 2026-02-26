@@ -111,6 +111,8 @@ function confirmIdentity(answer) {
   if (answer) {
     document.getElementById("step1").classList.add("hidden");
     document.getElementById("step2").classList.remove("hidden");
+   } else {
+    alert("This page is not for you 💔");
   }
 }
 
@@ -140,3 +142,4 @@ function selectVersion(choice) {
     `;
   }
 }
+
