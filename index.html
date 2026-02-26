@@ -3,235 +3,257 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Counting Down To You</title>
+  <title>Counting Down To You ✨</title>
   <link rel="stylesheet" href="styles.css">
-  <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;600;700&display=swap" rel="stylesheet">
-
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Serif+Display:ital@0;1&family=Quicksand:wght@300;400;500&display=swap" rel="stylesheet">
 </head>
-  <body>
+<body>
+
+<!-- PARTICLES BACKGROUND -->
+<div id="particles"></div>
+
+<!-- ============================================================ -->
+<!-- ENTRY GATE -->
+<!-- ============================================================ -->
 <section id="entry-gate" class="screen active gate-section">
+  <div class="gate-card">
+    <div class="gate-ornament">✦</div>
 
-  <!-- STEP 1 -->
-  <div id="step1">
-    <h2>This website is dedicated to a very special person.</h2>
-    <p>Are you sure you are <strong>Su Su Nyein Kyaw</strong>?</p>
-    <button onclick="confirmIdentity(true)">Yes</button>
-    <button onclick="confirmIdentity(false)">No</button>
+    <!-- STEP 1 -->
+    <div id="step1" class="gate-step">
+      <p class="gate-eyebrow">A message awaits</p>
+      <h2 class="gate-title">This page was made<br><em>for someone special.</em></h2>
+      <p class="gate-question">Are you <strong>Su Su Nyein Kyaw</strong>?</p>
+      <div class="gate-buttons">
+        <button class="btn-primary" onclick="confirmIdentity(true)">Yes, that's me ✨</button>
+        <button class="btn-ghost" onclick="confirmIdentity(false)">No, I'm not</button>
+      </div>
+    </div>
+
+    <!-- STEP 2 -->
+    <div id="step2" class="gate-step hidden">
+      <p class="gate-eyebrow">One more step</p>
+      <h2 class="gate-title">Just to keep this<br><em>safe for you.</em></h2>
+      <p class="gate-question">Please enter your <strong>Roll Number</strong></p>
+      <div class="input-wrap">
+        <input type="number" id="rollInput" placeholder="Enter your number" autocomplete="off">
+        <button class="btn-primary" onclick="verifyRoll()">Continue →</button>
+      </div>
+      <p id="rollError" class="error-msg"></p>
+    </div>
+
+    <!-- STEP 3 -->
+    <div id="step3" class="gate-step hidden">
+      <p class="gate-eyebrow">Almost there</p>
+      <h2 class="gate-title">One honest<br><em>question…</em></h2>
+      <p class="gate-question">Are you currently single or in a relationship?</p>
+      <div class="gate-buttons">
+        <button class="btn-primary" onclick="selectVersion('single')">I'm single 🤍</button>
+        <button class="btn-ghost" onclick="selectVersion('relationship')">In a relationship</button>
+      </div>
+    </div>
+
+    <div class="gate-ornament bottom">✦</div>
   </div>
-
-  <!-- STEP 2 -->
-  <div id="step2" class="hidden">
-    <p>To ensure your privacy, please enter your <strong>Roll Number</strong> to continue.</p>
-    <input type="number" id="rollInput" placeholder="Enter Number">
-    <button onclick="verifyRoll()">Submit</button>
-    <p id="rollError"></p>
-  </div>
-
-  <!-- STEP 3 -->
-  <div id="step3" class="hidden">
-    <p>Before we reveal the surprise, may I ask...</p>
-    <p><strong>Are you still single or in a relationship now?</strong></p>
-    <button onclick="selectVersion('single')">Single</button>
-    <button onclick="selectVersion('relationship')">In a Relationship</button>
-  </div>
-
 </section>
 
-<!-- HEARTFELT VERSION -->
-<div id="heartfelt-version" class="hidden">
-  <!-- Your ENTIRE original romantic page content goes here -->
-</div>
+<!-- ============================================================ -->
+<!-- COUNTDOWN SCREEN -->
+<!-- ============================================================ -->
+<section id="countdown-screen" class="screen">
+  <div class="cd-bg-layer"></div>
+  <div class="cd-content">
+    <div class="cd-eyebrow">counting down to</div>
+    <h1 class="cd-title">March 7, 2026</h1>
+    <p class="cd-sub">Something beautiful is on its way ✨</p>
 
-<!-- ALTERNATE VERSION -->
-<div id="alternate-version" class="hidden">
-  <h2>...</h2>
-</div>
-<audio id="bgMusic" loop>
-  <source src="happy-birthday.mp3" type="audio/mpeg">
-</audio>
-
-
-  <section id="countdown-screen" class="screen">
-    <div class="glow-bg"></div>
-    <div class="content">
-      <h1>Something beautiful is coming ✨</h1>
-      <p class="subtitle">Counting down to March 7, 2026</p>
-
-      <div class="timer">
-        <div class="time-box"><span id="days">00</span><small>Days</small></div>
-        <div class="time-box"><span id="hours">00</span><small>Hours</small></div>
-        <div class="time-box"><span id="minutes">00</span><small>Minutes</small></div>
-        <div class="time-box"><span id="seconds">00</span><small>Seconds</small></div>
+    <div class="timer">
+      <div class="time-box">
+        <span id="days">00</span>
+        <small>Days</small>
       </div>
-
-      <p class="romantic-note">Until the world celebrates you turning 20 💗</p>
-    </div>
-  </section>
-
-
-  <section id="gift-screen" class="screen">
-    <div class="gift-container">
-      <div class="gift-box" id="giftBox">
-        <div class="lid"></div>
-        <div class="box"></div>
-        <div class="ribbon-vertical"></div>
-        <div class="ribbon-horizontal"></div>
+      <div class="time-sep">:</div>
+      <div class="time-box">
+        <span id="hours">00</span>
+        <small>Hours</small>
       </div>
-      <p class="tap-text">Tap to Open Your Surprise 💌</p>
+      <div class="time-sep">:</div>
+      <div class="time-box">
+        <span id="minutes">00</span>
+        <small>Minutes</small>
+      </div>
+      <div class="time-sep">:</div>
+      <div class="time-box">
+        <span id="seconds">00</span>
+        <small>Seconds</small>
+      </div>
     </div>
-  </section>
 
+    <p class="cd-note">Until the world celebrates you turning 20 💗</p>
+  </div>
+</section>
 
- <section id="main-page" class="screen">
-    <div class="gallery-container">
-      <h1 class="gallery-title">Happy 20th Birthday, Su Su! 🎂</h1>
-     
-<div class="birthday-message">
+<!-- ============================================================ -->
+<!-- GIFT SCREEN -->
+<!-- ============================================================ -->
+<section id="gift-screen" class="screen">
+  <div class="gift-scene">
+    <p class="gift-hint-top">A little surprise is waiting for you…</p>
+    <div class="gift-box" id="giftBox">
+      <div class="lid">
+        <div class="lid-ribbon"></div>
+      </div>
+      <div class="box-body">
+        <div class="ribbon-v"></div>
+        <div class="ribbon-h"></div>
+        <div class="box-shine"></div>
+      </div>
+      <div class="bow">
+        <div class="bow-left"></div>
+        <div class="bow-right"></div>
+        <div class="bow-center"></div>
+      </div>
+    </div>
+    <p class="tap-text">Tap to open your surprise 💌</p>
+  </div>
+</section>
 
-  <h2>Happy 20th Birthday, Su Su 🤍</h2>
+<!-- ============================================================ -->
+<!-- MAIN PAGE -->
+<!-- ============================================================ -->
+<section id="main-page" class="screen">
+  <audio id="bgMusic" loop>
+    <source src="happy-birthday.mp3" type="audio/mpeg">
+  </audio>
 
-  <p>
-  Happy 20th Birthday, Su Su, may your 20s be filled with light and beautiful beginnings.<br><br>
+  <div class="main-wrap">
 
-  May you always have a peaceful and healthy mind.<br>
-  May your body stay strong and full of energy to follow your dreams.<br>
-  May you continue to be a loving daughter and a precious blessing to your parents.<br>
-  May you meet true and loyal friends who genuinely care for you.<br>
-  May fake friends and negative relationships stay far away from your life.<br>
-  May you grow into a wonderful doctor who helps many people with kindness.<br>
-  May you become a compassionate and skilled Obstetrician and Gynaecologist in the future.<br>
-  May you feel calm and confident in all your upcoming exams.<br>
-  May you achieve 600 marks in your upcoming METs and feel truly proud of yourself.<br>
-  May all your life goals come true, whether in medicine or wherever your heart leads you.<br>
-  May good luck gently find you whenever you need it.<br>
-  May bad luck and sadness stay far from your path.<br>
-  May you overcome every challenge in life with quiet strength.<br>
-  May you travel the world and see all the places you dream of.<br>
-  May you enjoy all the delicious food you love and smile freely.<br>
-  May you always remain as naturally beautiful as you are now, inside and out.<br>
-  May you have the freedom to choose your own happiness in everything you do.<br>
-  May you live long, joyful years with your beloved family by your side.<br><br>
+    <!-- HERO TITLE -->
+    <div class="hero-title-section">
+      <div class="hero-eyebrow">✦ March 7, 2026 ✦</div>
+      <h1 class="hero-title">Happy 20th Birthday,<br><em>Su Su</em> 🎂</h1>
+    </div>
 
-  And lastly, this is just my quiet little personal wish — may you continue to shine beautifully as single for now, because you are already more than enough just as you are.
-  </p>
-<p class="signature">
-    With love,<br>
-    — Someone who truly wishes you happiness 🤍
-  </p>
+    <!-- BIRTHDAY MESSAGE CARD -->
+    <div class="birthday-message">
+      <div class="bm-corner tl"></div>
+      <div class="bm-corner tr"></div>
+      <div class="bm-corner bl"></div>
+      <div class="bm-corner br"></div>
 
-</div>
- 
-      <div class="instruction-box">
-        <p class="tap-hint">
-          "Within these frames lie the reasons why my heart skips a beat whenever you're in my sight."
+      <h2 class="bm-title">Happy 20th Birthday, Su Su 🤍</h2>
+      <div class="bm-body">
+        <p>Happy 20th Birthday, Su Su — may your 20s be filled with light and beautiful beginnings.</p>
+        <br>
+        <p>
+          May you always have a peaceful and healthy mind.<br>
+          May your body stay strong and full of energy to follow your dreams.<br>
+          May you continue to be a loving daughter and a precious blessing to your parents.<br>
+          May you meet true and loyal friends who genuinely care for you.<br>
+          May fake friends and negative relationships stay far away from your life.<br>
+          May you grow into a wonderful doctor who helps many people with kindness.<br>
+          May you become a compassionate and skilled Obstetrician and Gynaecologist in the future.<br>
+          May you feel calm and confident in all your upcoming exams.<br>
+          May you achieve 600 marks in your upcoming METs and feel truly proud of yourself.<br>
+          May all your life goals come true, whether in medicine or wherever your heart leads you.<br>
+          May good luck gently find you whenever you need it.<br>
+          May bad luck and sadness stay far from your path.<br>
+          May you overcome every challenge in life with quiet strength.<br>
+          May you travel the world and see all the places you dream of.<br>
+          May you enjoy all the delicious food you love and smile freely.<br>
+          May you always remain as naturally beautiful as you are now, inside and out.<br>
+          May you have the freedom to choose your own happiness in everything you do.<br>
+          May you live long, joyful years with your beloved family by your side.
         </p>
-        <p class="sub-hint">(Go ahead, tap them... 😉)</p>
-        <p class="scroll-hint">Scroll down for something special... ↓</p>
+        <br>
+        <p>And lastly, this is just my quiet little personal wish — may you continue to shine beautifully as single for now, because you are already more than enough just as you are.</p>
       </div>
-<div class="heart-frame-layout">
+      <p class="bm-signature">With love,<br><em>— Someone who truly wishes you happiness 🤍</em></p>
+    </div>
 
-        <div class="center-photo" onclick="openLightbox(this)">
-          <img src="main.jpg" alt="Special Memory">
+    <!-- GALLERY INTRO -->
+    <div class="gallery-intro">
+      <p class="gallery-quote">"Within these frames lie the reasons why my heart skips a beat whenever you're in my sight."</p>
+      <p class="gallery-sub">(Go ahead, tap them… 😉)</p>
+      <p class="gallery-scroll">Scroll down for something special ↓</p>
+    </div>
+
+    <!-- HEART FRAME GALLERY -->
+    <div class="heart-frame-layout">
+      <div class="center-photo" onclick="openLightbox(this)">
+        <img src="main.jpg" alt="Special Memory">
+      </div>
+      <div class="frame-photo" onclick="openLightbox(this)"><img src="photo1.jpg" alt=""></div>
+      <div class="frame-photo" onclick="openLightbox(this)"><img src="photo2.jpg" alt=""></div>
+      <div class="frame-photo" onclick="openLightbox(this)"><img src="photo3.jpg" alt=""></div>
+      <div class="frame-photo" onclick="openLightbox(this)"><img src="photo4.jpg" alt=""></div>
+      <div class="frame-photo" onclick="openLightbox(this)"><img src="photo5.jpg" alt=""></div>
+      <div class="frame-photo" onclick="openLightbox(this)"><img src="photo6.jpg" alt=""></div>
+      <div class="frame-photo" onclick="openLightbox(this)"><img src="photo7.jpg" alt=""></div>
+      <div class="frame-photo" onclick="openLightbox(this)"><img src="photo8.jpg" alt=""></div>
+      <div class="frame-photo" onclick="openLightbox(this)"><img src="photo9.jpg" alt=""></div>
+      <div class="frame-photo" onclick="openLightbox(this)"><img src="photo10.jpg" alt=""></div>
+      <div class="frame-photo" onclick="openLightbox(this)"><img src="photo11.jpg" alt=""></div>
+      <div class="frame-photo" onclick="openLightbox(this)"><img src="photo12.jpg" alt=""></div>
+      <div class="frame-photo" onclick="openLightbox(this)"><img src="photo13.jpg" alt=""></div>
+      <div class="frame-photo" onclick="openLightbox(this)"><img src="photo14.jpg" alt=""></div>
+      <div class="frame-photo" onclick="openLightbox(this)"><img src="photo15.jpg" alt=""></div>
+      <div class="frame-photo" onclick="openLightbox(this)"><img src="photo16.jpg" alt=""></div>
+      <div class="frame-photo" onclick="openLightbox(this)"><img src="photo17.jpg" alt=""></div>
+      <div class="frame-photo" onclick="openLightbox(this)"><img src="photo18.jpg" alt=""></div>
+      <div class="frame-photo" onclick="openLightbox(this)"><img src="photo19.jpg" alt=""></div>
+    </div>
+
+    <!-- SPECIAL NOTE CARD -->
+    <div class="special-note">
+      <div class="note-card">
+        <div class="note-card-inner">
+          <h2 class="note-title">For You, Su Su 🤍</h2>
+          <div class="note-body">
+            <p>Su Su 🤍</p>
+            <p>I hope my gifts and this little website didn't cause you any inconvenience. I only wanted to make your 20th birthday feel a little more special and memorable in my own way.</p>
+            <p>I chose the book because I remember you liked the previous one from that author, so I thought you might enjoy this prequel too. I really hope it becomes something you love reading.</p>
+            <p>The pencil portrait I sent is just a small surprise. I hope you like it — or at least that it made you smile for a moment.</p>
+            <p>I'm sorry if the way the gifts were delivered felt unusual, but it was the only way I could think of to give you something on your birthday.</p>
+            <p>I hope your MET went well today and that you felt confident while answering.</p>
+            <p>Once again, happy 20th birthday, Su Su. You deserve a year full of happiness, success, and beautiful moments.</p>
+            <p class="note-final">And as my last little birthday gift… I want to offer you my heart — if your heart is still unclaimed. 🤍</p>
+          </div>
         </div>
-
-        <div class="frame-photo" onclick="openLightbox(this)"><img src="photo1.jpg"></div>
-        <div class="frame-photo" onclick="openLightbox(this)"><img src="photo2.jpg"></div>
-        <div class="frame-photo" onclick="openLightbox(this)"><img src="photo3.jpg"></div>
-        <div class="frame-photo" onclick="openLightbox(this)"><img src="photo4.jpg"></div>
-        <div class="frame-photo" onclick="openLightbox(this)"><img src="photo5.jpg"></div>
-        <div class="frame-photo" onclick="openLightbox(this)"><img src="photo6.jpg"></div>
-        <div class="frame-photo" onclick="openLightbox(this)"><img src="photo7.jpg"></div>
-        <div class="frame-photo" onclick="openLightbox(this)"><img src="photo8.jpg"></div>
-        <div class="frame-photo" onclick="openLightbox(this)"><img src="photo9.jpg"></div>
-        <div class="frame-photo" onclick="openLightbox(this)"><img src="photo10.jpg"></div>
-        <div class="frame-photo" onclick="openLightbox(this)"><img src="photo11.jpg"></div>
-        <div class="frame-photo" onclick="openLightbox(this)"><img src="photo12.jpg"></div>
-        <div class="frame-photo" onclick="openLightbox(this)"><img src="photo13.jpg"></div>
-        <div class="frame-photo" onclick="openLightbox(this)"><img src="photo14.jpg"></div>
-        <div class="frame-photo" onclick="openLightbox(this)"><img src="photo15.jpg"></div>
-        <div class="frame-photo" onclick="openLightbox(this)"><img src="photo16.jpg"></div>
-        <div class="frame-photo" onclick="openLightbox(this)"><img src="photo17.jpg"></div>
-        <div class="frame-photo" onclick="openLightbox(this)"><img src="photo18.jpg"></div>
-        <div class="frame-photo" onclick="openLightbox(this)"><img src="photo19.jpg"></div>
       </div>
-   </div>
+    </div>
 
-<div class="special-note">
+    <!-- SECRET REVEAL -->
+    <div class="secret-spoiler">
+      <button class="spoiler-btn" onclick="toggleSecret()">
+        Tap here only if you still don't know who I am…<br>
+        <span>and promise not to send the gifts back or throw them away hehe 🤍</span>
+      </button>
+      <p id="burmese-secret" class="spoiler-text">
+        ကျွန်တော့်ကို block သွားတာ ရက်ပေါင်း 300 တောင် ပြည့်ပီနော်။<br>
+        ကျွန်တော့်ကို ခုချိန်ထိ ခွင့်မလွှတ်နိုင်သေးဘူးလားဟင် စုစု ﮩـﮩﮩ٨ـ♡ﮩ٨ـﮩﮩ٨ـ
+      </p>
+    </div>
 
-  <div class="note-card">
-    <h2>For You, Su Su 🤍</h2>
+    <!-- FOOTER -->
+    <footer class="page-footer">
+      <p>Made with 🤍 for a very special person</p>
+    </footer>
 
-    <p>Su Su 🤍</p>
+  </div><!-- /main-wrap -->
+</section>
 
-    <p>
-      I hope my gifts and this little website didn’t cause you any inconvenience.
-      I only wanted to make your 20th birthday feel a little more special and memorable in my own way.
-    </p>
-
-    <p>
-      I chose the book because I remember you liked the previous one from that author,
-      so I thought you might enjoy this prequel too. I really hope it becomes something you love reading.
-    </p>
-
-    <p>
-      The pencil portrait I sent is just a small surprise. I hope you like it —
-      or at least that it made you smile for a moment.
-    </p>
-
-    <p>
-      I’m sorry if the way the gifts were delivered felt unusual,
-      but it was the only way I could think of to give you something on your birthday.
-    </p>
-
-    <p>
-      I hope your MET went well today and that you felt confident while answering.
-    </p>
-
-    <p>
-      Once again, happy 20th birthday, Su Su.
-      You deserve a year full of happiness, success, and beautiful moments.
-    </p>
-
-    <p class="final-line">
-      And as my last little birthday gift…
-      I want to offer you my heart — if your heart is still unclaimed. 🤍
-    </p>
-
-</div> <!-- closes note-card -->
-</div> <!-- closes special-note -->
-<div class="secret-spoiler">
-  
-  <p class="spoiler-trigger" onclick="toggleSecret()">
-    Tap here only if you still don’t know who I am…  
-    and promise not to send the gifts back or throw them away hehe 🤍
-  </p>
-
-<p id="burmese-secret" class="spoiler-text">
-     ကျွန်တော့်ကို block သွားတာ ရက်ပေါင်း 300 တောင် ပြည့်ပီနော်။
-    ကျွန်တော့်ကို ခုချိန်ထိ ခွင့်မလွှတ်နိုင်သေးဘူးလားဟင် စုစု ﮩـﮩﮩ٨ـ♡ﮩ٨ـﮩﮩ٨ـ
-  </p>
-
+<!-- LIGHTBOX -->
+<div id="lightbox" class="lightbox" onclick="closeLightbox()">
+  <div class="lightbox-inner">
+    <img id="lightbox-img" src="" alt="Zoomed View">
+    <button class="lightbox-close" onclick="closeLightbox()">✕</button>
+  </div>
 </div>
 
-</section> <!-- closes main-page -->
-   <div id="lightbox" class="lightbox" onclick="closeLightbox()">
-  <img id="lightbox-img" src="" alt="Zoomed View">
-</div>
+<!-- HEARTS CONTAINER -->
+<div id="hearts-container"></div>
+
 <script src="script.js"></script>
 </body>
 </html>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
