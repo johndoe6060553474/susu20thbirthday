@@ -508,25 +508,32 @@ function selectVersion(choice) {
           // Countdown
           const TARGET = new Date("February 7, 2026 00:00:00").getTime();
           function pad(n) { return String(n).padStart(2,'0'); }
-          let timer;
-          function tick() {
-            const dist = TARGET - Date.now();
-            if (dist <= 0) {
-              clearInterval(timer);
-              showHeart();
-              return;
-            }
-            document.getElementById('hbDays').textContent    = pad(Math.floor(dist/864e5));
-            document.getElementById('hbHours').textContent   = pad(Math.floor((dist%864e5)/36e5));
-            document.getElementById('hbMinutes').textContent = pad(Math.floor((dist%36e5)/6e4));
-            document.getElementById('hbSeconds').textContent = pad(Math.floor((dist%6e4)/1e3));
-          }
-          timer = setInterval(tick, 1000);
-          tick();
 
           function showHeart() {
             document.getElementById('hbCountdown').classList.remove('active');
             document.getElementById('hbHeartScreen').classList.add('active');
+          }
+
+          const dist0 = TARGET - Date.now();
+          if (dist0 <= 0) {
+            // Date already passed — skip straight to heart
+            showHeart();
+          } else {
+            let timer;
+            function tick() {
+              const dist = TARGET - Date.now();
+              if (dist <= 0) {
+                clearInterval(timer);
+                showHeart();
+                return;
+              }
+              document.getElementById('hbDays').textContent    = pad(Math.floor(dist/864e5));
+              document.getElementById('hbHours').textContent   = pad(Math.floor((dist%864e5)/36e5));
+              document.getElementById('hbMinutes').textContent = pad(Math.floor((dist%36e5)/6e4));
+              document.getElementById('hbSeconds').textContent = pad(Math.floor((dist%6e4)/1e3));
+            }
+            timer = setInterval(tick, 1000);
+            tick();
           }
 
           function breakHeart() {
