@@ -1,6 +1,3 @@
-/* ============================================================
-   script.js — Counting Down To You
-   ============================================================ */
 
 // ── CONFIGURATION ────────────────────────────────────────────
 const TARGET_DATE = new Date("February 7, 2026 00:00:00").getTime();
@@ -545,3 +542,4 @@ function selectVersion(choice) {
         </script>
       `;
     }
+
