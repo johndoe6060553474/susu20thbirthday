@@ -232,10 +232,26 @@ function fireEcgAndBox2() {
   }, 2400);
 }
 
+let identityRevealed = false;
+
 function toggleIdentity() {
   const reveal = document.getElementById("identity-reveal");
   if (!reveal) return;
-  reveal.classList.toggle("hidden");
+
+  if (!identityRevealed) {
+    // First tap: show the name card
+    reveal.classList.remove("hidden");
+    identityRevealed = true;
+  } else {
+    // Second tap: hide only the ECG, box 2 stays
+    const svg = document.getElementById("ecgSvg");
+    if (svg) {
+      svg.style.transition = "opacity 0.6s ease";
+      svg.style.opacity = "0";
+      setTimeout(() => svg.classList.remove("active"), 650);
+    }
+    identityRevealed = false;
+  }
 }
 
 // ── ENTRY GATE ───────────────────────────────────────────────
