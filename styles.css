@@ -988,6 +988,26 @@ input[type="number"]::-webkit-outer-spin-button { -webkit-appearance: none; }
   box-shadow: 0 40px 100px rgba(0,0,0,0.6);
 }
 
+
+.lightbox-caption {
+  display: none;
+  font-family: 'Cormorant Garamond', Georgia, serif;
+  font-size: clamp(1.2rem, 3vw, 1.7rem);
+  font-style: italic;
+  font-weight: 300;
+  color: rgba(255, 220, 235, 0.95);
+  text-align: center;
+  margin-top: 18px;
+  padding: 0 20px;
+  letter-spacing: 0.5px;
+  line-height: 1.6;
+  text-shadow: 0 2px 12px rgba(232, 66, 110, 0.4);
+  animation: captionFadeIn 0.8s ease both;
+}
+@keyframes captionFadeIn {
+  from { opacity: 0; transform: translateY(8px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
 .lightbox-close {
   position: absolute;
   top: -16px; right: -16px;
