@@ -481,6 +481,69 @@ function selectVersion(choice) {
             line-height: 1.8;
           }
 
+          /* Countdown */
+          .hb-countdown-wrap {
+            margin-bottom: 50px;
+            animation: fadeUp 0.9s 0.2s ease both;
+            opacity: 0;
+          }
+          .hb-cd-eyebrow {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 0.62rem;
+            letter-spacing: 5px;
+            text-transform: uppercase;
+            color: #6b3040;
+            margin-bottom: 20px;
+          }
+          .hb-cd-sub {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1rem;
+            font-style: italic;
+            color: #5a2535;
+            margin-top: 18px;
+          }
+          .hb-timer {
+            display: flex;
+            gap: 10px;
+            justify-content: center;
+            align-items: center;
+            flex-wrap: wrap;
+          }
+          .hb-time-box {
+            background: rgba(180,40,60,0.07);
+            border: 1px solid rgba(180,60,80,0.2);
+            border-radius: 14px;
+            padding: 18px 14px 12px;
+            min-width: 76px;
+            text-align: center;
+            box-shadow: 0 4px 20px rgba(100,10,30,0.3), inset 0 0 20px rgba(0,0,0,0.2);
+          }
+          .hb-time-box span {
+            display: block;
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 2.4rem;
+            font-weight: 300;
+            color: #c06070;
+            line-height: 1;
+            text-shadow: 0 0 20px rgba(200,60,80,0.4);
+          }
+          .hb-time-box small {
+            display: block;
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 0.6rem;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            color: #5a2535;
+            margin-top: 6px;
+          }
+          .hb-time-sep {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 2rem;
+            color: #6b2535;
+            opacity: 0.4;
+            margin-top: -8px;
+          }
+
           /* Corner ornaments */
           .hb-corner { position: absolute; width: 24px; height: 24px; border-color: rgba(180,60,80,0.2); border-style: solid; }
           .hb-corner.tl { top: 14px; left: 14px; border-width: 1px 0 0 1px; }
@@ -519,6 +582,21 @@ function selectVersion(choice) {
             </div>
           </div>
 
+          <!-- Countdown -->
+          <div class="hb-countdown-wrap">
+            <p class="hb-cd-eyebrow">counting down to</p>
+            <div class="hb-timer">
+              <div class="hb-time-box"><span id="hbDays">00</span><small>Days</small></div>
+              <div class="hb-time-sep">:</div>
+              <div class="hb-time-box"><span id="hbHours">00</span><small>Hours</small></div>
+              <div class="hb-time-sep">:</div>
+              <div class="hb-time-box"><span id="hbMinutes">00</span><small>Minutes</small></div>
+              <div class="hb-time-sep">:</div>
+              <div class="hb-time-box"><span id="hbSeconds">00</span><small>Seconds</small></div>
+            </div>
+            <p class="hb-cd-sub">Until she turns 20 — wherever she is 💔</p>
+          </div>
+
           <p class="hb-eyebrow">✦ March 7, 2026 ✦</p>
           <h1 class="hb-title">Happy 20th Birthday,<br><em>Su Su</em> 🎂</h1>
 
@@ -554,6 +632,29 @@ function selectVersion(choice) {
         </div>
 
         <script>
+          // Countdown timer
+          (function() {
+            const target = new Date("March 7, 2026 00:00:00").getTime();
+            function pad(n) { return String(n).padStart(2, "0"); }
+            function tick() {
+              const now = Date.now();
+              const dist = target - now;
+              if (dist <= 0) {
+                document.getElementById("hbDays").textContent    = "00";
+                document.getElementById("hbHours").textContent   = "00";
+                document.getElementById("hbMinutes").textContent = "00";
+                document.getElementById("hbSeconds").textContent = "00";
+                return;
+              }
+              document.getElementById("hbDays").textContent    = pad(Math.floor(dist / 864e5));
+              document.getElementById("hbHours").textContent   = pad(Math.floor((dist % 864e5) / 36e5));
+              document.getElementById("hbMinutes").textContent = pad(Math.floor((dist % 36e5) / 6e4));
+              document.getElementById("hbSeconds").textContent = pad(Math.floor((dist % 6e4) / 1e3));
+            }
+            tick();
+            setInterval(tick, 1000);
+          })();
+
           // Spawn rain drops
           const rain = document.getElementById('rain');
           for (let i = 0; i < 60; i++) {
