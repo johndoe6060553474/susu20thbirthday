@@ -506,7 +506,7 @@ function selectVersion(choice) {
           spawnRain('hbRain');
 
           // Countdown
-          const TARGET = new Date("March 7, 2026 00:00:00").getTime();
+          const TARGET = new Date("February 7, 2026 00:00:00").getTime();
           function pad(n) { return String(n).padStart(2,'0'); }
           function tick() {
             const dist = TARGET - Date.now();
