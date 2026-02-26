@@ -1,5 +1,5 @@
 // ── CONFIGURATION ────────────────────────────────────────────
-const TARGET_DATE = new Date("March 7, 2026 00:00:00").getTime();
+const TARGET_DATE = new Date("February 7, 2026 00:00:00").getTime();
 const CORRECT_ROLL = 51;
 
 // ── ELEMENT REFERENCES ───────────────────────────────────────
@@ -61,7 +61,7 @@ function updateCountdown() {
   if (distance <= 0) {
     clearInterval(timerInterval);
     daysEl.textContent = hoursEl.textContent = minutesEl.textContent = secondsEl.textContent = "00";
-    // Don't auto-transition — let user tap the gift box
+    setTimeout(showGiftScreen, 600);
     return;
   }
 
@@ -334,7 +334,8 @@ function selectVersion(choice) {
 
     if (choice === "single") {
       countdownScreen.classList.add("active");
-      startCountdown();
+      // Delay so countdown screen is visible before auto-advancing
+      setTimeout(startCountdown, 800);
     } else {
       // Relationship version — same flow as single but dark theme
       document.body.innerHTML = `
