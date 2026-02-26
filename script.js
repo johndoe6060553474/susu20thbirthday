@@ -1,6 +1,5 @@
-
 // ── CONFIGURATION ────────────────────────────────────────────
-const TARGET_DATE = new Date("February 7, 2026 00:00:00").getTime();
+const TARGET_DATE = new Date("March 7, 2026 00:00:00").getTime();
 const CORRECT_ROLL = 51;
 
 // ── ELEMENT REFERENCES ───────────────────────────────────────
@@ -11,10 +10,10 @@ const giftBox         = document.getElementById("giftBox");
 const bgMusic         = document.getElementById("bgMusic");
 const heartsContainer = document.getElementById("hearts-container");
 
-// Force all screens hidden on init
-countdownScreen.classList.remove("active");
-giftScreen.classList.remove("active");
-mainPage.classList.remove("active");
+// Force all screens hidden on init (guard against null)
+if (countdownScreen) countdownScreen.classList.remove("active");
+if (giftScreen)      giftScreen.classList.remove("active");
+if (mainPage)        mainPage.classList.remove("active");
 
 // ── PARTICLE BACKGROUND ──────────────────────────────────────
 (function spawnParticles() {
@@ -55,13 +54,14 @@ let timerInterval = null;
 function pad(n) { return String(n).padStart(2, "0"); }
 
 function updateCountdown() {
+  if (!daysEl || !hoursEl || !minutesEl || !secondsEl) return;
   const now      = Date.now();
   const distance = TARGET_DATE - now;
 
   if (distance <= 0) {
     clearInterval(timerInterval);
     daysEl.textContent = hoursEl.textContent = minutesEl.textContent = secondsEl.textContent = "00";
-    setTimeout(showGiftScreen, 600);
+    // Don't auto-transition — let user tap the gift box
     return;
   }
 
@@ -542,4 +542,5 @@ function selectVersion(choice) {
         </script>
       `;
     }
-
+  }, 500);
+}
