@@ -182,10 +182,60 @@ document.addEventListener("keydown", e => {
 });
 
 // ── SECRET REVEAL ─────────────────────────────────────────────
+let secretRevealed = false;
+
 function toggleSecret() {
   const el = document.getElementById("burmese-secret");
   if (!el) return;
   el.classList.toggle("show");
+
+  // Once opened for the first time, animate the ECG then show box 2
+  if (!secretRevealed && el.classList.contains("show")) {
+    secretRevealed = true;
+    setTimeout(fireEcgAndBox2, 700);
+  }
+}
+
+function fireEcgAndBox2() {
+  const svg      = document.getElementById("ecgSvg");
+  const line     = document.getElementById("ecgPolyline");
+  const arrow    = document.getElementById("ecgArrow");
+  const label    = document.getElementById("ecgLabel");
+  const box2     = document.getElementById("spoilerBox2");
+
+  if (!svg || !box2) return;
+
+  // Show SVG overlay
+  svg.classList.add("active");
+
+  // Trigger ECG draw animation next frame
+  requestAnimationFrame(() => {
+    requestAnimationFrame(() => {
+      line.classList.add("draw");
+      label.classList.add("show");
+    });
+  });
+
+  // Arrow tip appears when line finishes
+  setTimeout(() => {
+    arrow.classList.add("show");
+  }, 2100);
+
+  // Box 2 fades in
+  setTimeout(() => {
+    box2.classList.add("active");
+    requestAnimationFrame(() => {
+      requestAnimationFrame(() => {
+        box2.classList.add("visible");
+      });
+    });
+  }, 2400);
+}
+
+function toggleIdentity() {
+  const reveal = document.getElementById("identity-reveal");
+  if (!reveal) return;
+  reveal.classList.toggle("hidden");
 }
 
 // ── ENTRY GATE ───────────────────────────────────────────────
@@ -289,4 +339,3 @@ function selectVersion(choice) {
     }
   }, 500);
 }
-
