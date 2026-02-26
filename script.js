@@ -41,9 +41,6 @@ updateCountdown();
 // --- SCREEN NAVIGATION ---
 function showGiftScreen() {
   countdownScreen.classList.remove("active");
-  countdownScreen.classList.add("hidden");
-
-  giftScreen.classList.remove("hidden");
   giftScreen.classList.add("active");
 }
 
@@ -78,12 +75,8 @@ if (giftBox) {
     }
 
     setTimeout(() => {
-      giftScreen.classList.remove("active");
-      giftScreen.classList.add("hidden");
-
-      mainPage.classList.remove("hidden");
-      mainPage.classList.add("active");
-
+     giftScreen.classList.remove("active");
+mainPage.classList.add("active");
       document.body.style.overflow = "auto";
     }, 3000);
   });
@@ -129,10 +122,9 @@ function verifyRoll() {
 }
 
 function selectVersion(choice) {
-  document.getElementById("entry-gate").classList.add("hidden");
+  document.getElementById("entry-gate").classList.remove("active");
 
   if (choice === "single") {
-    countdownScreen.classList.remove("hidden");
     countdownScreen.classList.add("active");
   } else {
     document.body.innerHTML = `
@@ -142,4 +134,6 @@ function selectVersion(choice) {
     `;
   }
 }
+}
+
 
