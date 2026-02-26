@@ -1,3 +1,7 @@
+/* ============================================================
+   script.js — Counting Down To You
+   ============================================================ */
+
 // ── CONFIGURATION ────────────────────────────────────────────
 const TARGET_DATE = new Date("February 7, 2026 00:00:00").getTime();
 const CORRECT_ROLL = 51;
@@ -408,9 +412,9 @@ function selectVersion(choice) {
         <div class="rain" id="hbRain"></div>
 
         <!-- SCREEN 1: COUNTDOWN -->
-        <div class="hb-screen active" id="hbCountdown">
+        <div class="hb-screen" id="hbCountdown">
           <p class="hb-cd-eyebrow">counting down to</p>
-          <h1 class="hb-cd-title">March 7, 2026</h1>
+          <h1 class="hb-cd-title">February 7, 2026</h1>
           <p class="hb-cd-sub">Something bittersweet is on its way…</p>
           <div class="hb-timer">
             <div class="hb-time-box"><span id="hbDays">00</span><small>Days</small></div>
@@ -425,7 +429,7 @@ function selectVersion(choice) {
         </div>
 
         <!-- SCREEN 2: BREAKING HEART -->
-        <div class="hb-screen" id="hbHeartScreen">
+        <div class="hb-screen active" id="hbHeartScreen">
           <p class="hb-heart-hint">A bittersweet surprise is waiting for you…</p>
           <div class="heart-scene" id="heartScene" onclick="breakHeart()">
             <svg class="heart-svg" viewBox="0 0 160 160" xmlns="http://www.w3.org/2000/svg">
