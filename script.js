@@ -160,13 +160,22 @@ setInterval(() => {
 const lightbox    = document.getElementById("lightbox");
 const lightboxImg = document.getElementById("lightbox-img");
 
-function openLightbox(element) {
+function openLightbox(element, isCenter = false) {
+  const caption = document.getElementById("lightbox-caption");
   const img = element.querySelector("img");
   if (!img || !img.src) return;
   lightboxImg.src = img.src;
+  if (caption) {
+    if (isCenter) {
+      caption.textContent = "This pic always gets me fall in you every time I see it… 🤍";
+      caption.style.display = "block";
+    } else {
+      caption.textContent = "";
+      caption.style.display = "none";
+    }
+  }
   lightbox.style.display = "flex";
   document.body.style.overflow = "hidden";
-  // Animate in
   requestAnimationFrame(() => lightbox.classList.add("open"));
 }
 
