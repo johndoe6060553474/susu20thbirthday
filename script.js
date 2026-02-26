@@ -103,3 +103,31 @@ giftBox.addEventListener("click", function () {
     document.body.style.overflow = "auto";
   }, 3000);
 });
+function confirmIdentity(answer) {
+  if (answer) {
+    document.getElementById("step1").classList.add("hidden");
+    document.getElementById("step2").classList.remove("hidden");
+  }
+}
+
+function verifyRoll() {
+  const roll = document.getElementById("rollInput").value;
+  const error = document.getElementById("rollError");
+
+  if (roll == 51) {
+    document.getElementById("step2").classList.add("hidden");
+    document.getElementById("step3").classList.remove("hidden");
+  } else {
+    error.textContent = "Incorrect Roll Number.";
+  }
+}
+
+function selectVersion(choice) {
+  document.getElementById("entry-gate").classList.add("hidden");
+
+  if (choice === "single") {
+    document.getElementById("heartfelt-version").classList.remove("hidden");
+  } else {
+    document.getElementById("alternate-version").classList.remove("hidden");
+  }
+}
