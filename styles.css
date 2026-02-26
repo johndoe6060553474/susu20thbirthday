@@ -372,9 +372,6 @@ h1 { font-size: 2.2rem; margin-bottom: 10px; }
 
 .gate-section {
   min-height: 100vh;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
 }
 
 .hidden {
@@ -386,6 +383,7 @@ h1 { font-size: 2.2rem; margin-bottom: 10px; }
   padding: 10px 20px;
   cursor: pointer;
 }
+
 
 
 
