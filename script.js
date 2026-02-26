@@ -134,6 +134,6 @@ function selectVersion(choice) {
     `;
   }
 }
-}
+
 
 
