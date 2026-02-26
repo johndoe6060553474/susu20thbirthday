@@ -12,7 +12,10 @@ const giftScreen = document.getElementById("gift-screen");
 const mainPage = document.getElementById("main-page");
 const giftBox = document.getElementById("giftBox");
 const bgMusic = document.getElementById("bgMusic");
-
+// Force initial state
+countdownScreen.classList.remove("active");
+giftScreen.classList.remove("active");
+mainPage.classList.remove("active");
 // --- COUNTDOWN ---
 function updateCountdown() {
   const now = new Date().getTime();
@@ -134,6 +137,7 @@ function selectVersion(choice) {
     `;
   }
 }
+
 
 
 
