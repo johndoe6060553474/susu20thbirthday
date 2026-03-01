@@ -4,7 +4,7 @@
 
 // ── CONFIGURATION ────────────────────────────────────────────
 const TARGET_DATE = new Date("February 7, 2026 00:00:00").getTime();
-const CORRECT_ROLL = 51;
+const CORRECT_ROLL = 532;
 
 // ── ELEMENT REFERENCES ───────────────────────────────────────
 const countdownScreen = document.getElementById("countdown-screen");
