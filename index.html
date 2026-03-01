@@ -1,285 +1,313 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Counting Down To You ✨</title>
-  <link rel="stylesheet" href="styles.css">
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Serif+Display:ital@0;1&family=Quicksand:wght@300;400;500&family=Padauk:wght@400;700&family=Dancing+Script:wght@600;700&display=swap" rel="stylesheet">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Counting Down To You ✨</title>
+    <link rel="stylesheet" href="styles.css">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Serif+Display:ital@0;1&family=Quicksand:wght@300;400;500&family=Padauk:wght@400;700&family=Dancing+Script:wght@600;700&display=swap"
+        rel="stylesheet">
 </head>
+
 <body>
 
-<!-- PARTICLES BACKGROUND -->
-<div id="particles"></div>
+    <!-- PARTICLES BACKGROUND -->
+    <div id="particles"></div>
 
-<!-- ============================================================ -->
-<!-- ENTRY GATE -->
-<!-- ============================================================ -->
-<section id="entry-gate" class="screen active gate-section">
-  <div class="gate-card">
-    <div class="gate-ornament">✦</div>
+    <!-- ============================================================ -->
+    <!-- ENTRY GATE -->
+    <!-- ============================================================ -->
+    <section id="entry-gate" class="screen active gate-section">
+        <div class="gate-card">
+            <div class="gate-ornament">✦</div>
 
-    <!-- STEP 1 -->
-    <div id="step1" class="gate-step">
-      <p class="gate-eyebrow">A message awaits</p>
-      <h2 class="gate-title">This website was made exclusively<br><em>for Su Su Nyein Kyaw.</em></h2>
-      <p class="gate-question">Are you <strong>Su Su Nyein Kyaw</strong>?</p>
-      <div class="gate-buttons">
-        <button class="btn-primary" onclick="confirmIdentity(true)">Yes, that's me ✨</button>
-        <button class="btn-ghost" onclick="confirmIdentity(false)">No, I'm not</button>
-      </div>
-    </div>
+            <!-- STEP 1 -->
+            <div id="step1" class="gate-step">
+                <p class="gate-eyebrow">A message awaits</p>
+                <h2 class="gate-title">This website was made exclusively<br><em>for Su Su Nyein Kyaw.</em></h2>
+                <p class="gate-question">Are you <strong>Su Su Nyein Kyaw</strong>?</p>
+                <div class="gate-buttons">
+                    <button class="btn-primary" onclick="confirmIdentity(true)">Yes, that's me ✨</button>
+                    <button class="btn-ghost" onclick="confirmIdentity(false)">No, I'm not</button>
+                </div>
+            </div>
 
-    <!-- STEP 2 -->
-    <div id="step2" class="gate-step hidden">
-      <p class="gate-eyebrow">One more step</p>
-      <h2 class="gate-title">Just to be sure<br><em>you are Su Su.</em></h2>
-      <p class="gate-question">Please enter your <strong>Roll Number</strong></p>
-      <div class="input-wrap">
-        <input type="number" id="rollInput" placeholder="Enter your number" autocomplete="off">
-        <button class="btn-primary" onclick="verifyRoll()">Continue →</button>
-      </div>
-      <p id="rollError" class="error-msg"></p>
-    </div>
+            <!-- STEP 2 -->
+            <div id="step2" class="gate-step hidden">
+                <p class="gate-eyebrow">One more step</p>
+                <h2 class="gate-title">Just to be sure<br><em>you are Su Su.</em></h2>
+                <p class="gate-question">Please enter your <strong>Roll Number</strong></p>
+                <div class="input-wrap">
+                    <input type="number" id="rollInput" placeholder="Enter your number" autocomplete="off">
+                    <button class="btn-primary" onclick="verifyRoll()">Continue →</button>
+                </div>
+                <p id="rollError" class="error-msg"></p>
+            </div>
 
-    <!-- STEP 3 -->
-    <div id="step3" class="gate-step hidden">
-      <p class="gate-eyebrow">Almost there</p>
-      <h2 class="gate-title">One honest<br><em>question…</em></h2>
-      <p class="gate-question">Are you currently single or in a relationship?</p>
-      <div class="gate-buttons">
-        <button class="btn-primary" onclick="selectVersion('single')">I'm single 🤍</button>
-        <button class="btn-ghost" onclick="selectVersion('relationship')">In a relationship</button>
-      </div>
-    </div>
+            <!-- STEP 3 -->
+            <div id="step3" class="gate-step hidden">
+                <p class="gate-eyebrow">Almost there</p>
+                <h2 class="gate-title">One honest<br><em>question…</em></h2>
+                <p class="gate-question">Are you currently single or in a relationship?</p>
+                <div class="gate-buttons">
+                    <button class="btn-primary" onclick="selectVersion('single')">I'm single 🤍</button>
+                    <button class="btn-ghost" onclick="selectVersion('relationship')">In a relationship</button>
+                </div>
+            </div>
 
-    <div class="gate-ornament bottom">✦</div>
-  </div>
-</section>
-
-<!-- ============================================================ -->
-<!-- COUNTDOWN SCREEN -->
-<!-- ============================================================ -->
-<section id="countdown-screen" class="screen">
-  <div class="cd-bg-layer"></div>
-  <div class="cd-content">
-    <div class="cd-eyebrow">counting down to</div>
-    <h1 class="cd-title">March 7, 2026</h1>
-    <p class="cd-sub">Something beautiful is on its way ✨</p>
-
-    <div class="timer">
-      <div class="time-box">
-        <span id="days">00</span>
-        <small>Days</small>
-      </div>
-      <div class="time-sep">:</div>
-      <div class="time-box">
-        <span id="hours">00</span>
-        <small>Hours</small>
-      </div>
-      <div class="time-sep">:</div>
-      <div class="time-box">
-        <span id="minutes">00</span>
-        <small>Minutes</small>
-      </div>
-      <div class="time-sep">:</div>
-      <div class="time-box">
-        <span id="seconds">00</span>
-        <small>Seconds</small>
-      </div>
-    </div>
-
-    <p class="cd-note">Until the world celebrates you turning 20 💗</p>
-  </div>
-</section>
-
-<!-- ============================================================ -->
-<!-- GIFT SCREEN -->
-<!-- ============================================================ -->
-<section id="gift-screen" class="screen">
-  <div class="gift-scene">
-    <p class="gift-hint-top">A little surprise is waiting for you…</p>
-    <div class="gift-box" id="giftBox">
-      <div class="lid">
-        <div class="lid-ribbon"></div>
-      </div>
-      <div class="box-body">
-        <div class="ribbon-v"></div>
-        <div class="ribbon-h"></div>
-        <div class="box-shine"></div>
-      </div>
-      <div class="bow">
-        <div class="bow-left"></div>
-        <div class="bow-right"></div>
-        <div class="bow-center"></div>
-      </div>
-    </div>
-    <p class="tap-text">Tap to open your surprise 💌</p>
-  </div>
-</section>
-
-<!-- ============================================================ -->
-<!-- MAIN PAGE -->
-<!-- ============================================================ -->
-<section id="main-page" class="screen">
-  <audio id="bgMusic" loop>
-    <source src="happy-birthday.mp3" type="audio/mpeg">
-  </audio>
-
-  <div class="main-wrap">
-
-    <!-- HERO TITLE -->
-    <div class="hero-title-section">
-      <div class="hero-eyebrow">✦ March 7, 2026 ✦</div>
-      <h1 class="hero-title">Happy 20th Birthday,<br><em>Su Su</em> 🎂</h1>
-    </div>
-
-    <!-- BIRTHDAY MESSAGE CARD -->
-    <div class="birthday-message">
-      <div class="bm-corner tl"></div>
-      <div class="bm-corner tr"></div>
-      <div class="bm-corner bl"></div>
-      <div class="bm-corner br"></div>
-
-      <h2 class="bm-title">🎂 Happy 20th Birthday, Su Su 🤍</h2>
-      <div class="bm-body burmese-text">
-        <p>အသက် ၂၀ ပြည့် မွေးနေ့မှာ ပျော်ရွှင်ပါစေနော် စုစု — မွေးနေ့ကစလို့နေ့တိုင်းမှာ လင်းလက်တောက်ပမှုတွေ၊ လှပတဲ့ အစပြုခြင်းတွေနဲ့ ပြည့်နေပါစေ။</p>
-        <br>
-        <p>
-          အမြဲတမ်း အေးချမ်းပြီး ကျန်းမာတဲ့ စိတ်နှလုံးကို ပိုင်ဆိုင်နိုင်ပါစေ။<br>
-          စုစုရဲ့ အိပ်မက်တွေကို အကောင်အထည်ဖော်ဖို့အတွက် ခန္ဓာကိုယ် ကျန်းမာကြံ့ခိုင်ပြီး အားအင် အပြည့် ရှိပါစေ။<br>
-          မိဘနှစ်ပါးအတွက် အမြဲတမ်း ချစ်စရာကောင်းတဲ့ အဖိုးတန်တဲ့ ကောင်းချီးမင်္ဂလာသမီးရတနာလေး ဖြစ်ပါစေ။<br>
-          စုစုအပေါ် စစ်မှန်တဲ့ စေတနာနဲ့ ဂရုစိုက်မယ့် သစ္စာရှိတဲ့ သူငယ်ချင်းကောင်းတွေနဲ့ပဲ ဆုံတွေ့ရပါစေ။<br>
-          ဟန်ဆောင်မှုရှိတဲ့ သူငယ်ချင်းတွေနဲ့ အဆိပ်အတောက်ဖြစ်စေတဲ့ relationship တွေ စုစုရဲ့ဘဝထဲကနေ ဝေးဝေးမှာပဲ ရှိပါစေ။<br>
-          လူအများအပြားကို ကြင်နာမှုနဲ့ ကူညီပေးနိုင်မယ့် မွန်မြတ်တဲ့ ဆရာဝန်မလေးတစ်ယောက် ဖြစ်လာပါစေ။<br>
-          နောင်တစ်ချိန်မှာ ကျွမ်းကျင်တဲ့ သားဖွားမီးယပ်အထူးကု ဆရာဝန်ကြီး (OG) တစ်ယောက် ဖြစ်ပါစေ။<br>
-          လာမယ့် စာမေးပွဲတိုင်းမှာ စိတ်အေးအေးထားပြီး ယုံကြည်မှုအပြည့်နဲ့ ဖြေဆိုနိုင်ပါစေ။<br>
-          လာမယ့် MET တွေမှာ အမှတ် ၆၀၀ ရရှိပြီး ကိုယ့်ကိုယ်ကိုယ် တကယ်ကို ဂုဏ်ယူနိုင်ပါစေ။<br>
-          ဆေးပညာနယ်ပယ်မှာဖြစ်စေ၊ စုစု သွားချင်တဲ့ ဘယ်နယ်ပယ်မှာပဲဖြစ်ဖြစ် စုစုရဲ့ ရည်မှန်းချက်တွေအားလုံး အောင်မြင်ပါစေ။<br>
-          စုစုလိုအပ်တဲ့ အချိန်တိုင်းမှာ ကံကောင်းခြင်းတွေက စုစုဆီကို ညင်သာစွာ ရောက်ရှိလာပါစေ။<br>
-          ကံမကောင်းမှုတွေနဲ့ ဝမ်းနည်းမှုတွေက စုစုရဲ့ ဘဝခရီးကနေ ဝေးဝေးမှာပဲ ရှိပါစေ။<br>
-          ဘဝရဲ့ စိန်ခေါ်မှုတိုင်းကိုလည်း တည်ငြိမ်တဲ့ ခွန်အားတွေနဲ့ ကျော်ဖြတ်နိုင်ပါစေ။<br>
-          ကမ္ဘာပတ်ပြီး စုစုသွားချင်တဲ့ နေရာတွေကို အရောက်သွားနိုင်ပါစေ။<br>
-          စုစုနှစ်သက်တဲ့ အရသာရှိတဲ့ အစားအသောက်တွေကို စားသောက်ရင်း လွတ်လပ်ပေါ့ပါးစွာ ပြုံးပျော်နိုင်ပါစေ။<br>
-          အတွင်းစိတ်ရော အပြင်ပန်းပါ အခုလိုပဲ အမြဲတမ်း သဘာဝအတိုင်း လှပနေပါစေ။<br>
-          စုစုလုပ်သမျှ အရာတိုင်းမှာ ကိုယ်ပိုင်ပျော်ရွှင်မှုကို လွတ်လပ်စွာ ရွေးချယ်နိုင်ပါစေ။<br>
-          စုစုချစ်ရတဲ့ မိသားစုနဲ့အတူတူ ပျော်ရွှင်စရာကောင်းတဲ့ နှစ်ပေါင်းများစွာကို အတူဖြတ်သန်းနိုင်ပါစေ။
-        </p>
-        <br>
-        <p>နောက်ဆုံးအနေနဲ့ ဒါကတော့ ကျွန်တော့်ရဲ့ ကိုယ်ပိုင် ဆုတောင်းလေးပါ — စုစုက စုစုရဲ့အခုဖြစ်တည်နေတဲ့ ပုံစံလေးနဲ့တင် ပြည့်စုံလွန်းနေတာမို့ အခုလောလောဆယ်တော့ Single အဖြစ်နဲ့ပဲ လှလှပပ ဆက်ပြီး တောက်ပနေပေးပါဦးနော် ။</p>
-      </div>
-      <p class="bm-signature burmese-text">မေတ္တာဖြင့်၊<br><em>— စုစုကို အမြဲတမ်းအဆင်ပြေ ပျော်ရွှင်နေစေချင်သူ 🤍</em></p>
-    </div>
-
-    <!-- GALLERY INTRO -->
-    <div class="gallery-intro">
-      <p class="gallery-quote">"Within these frames lie the reasons why my heart skips a beat whenever you're in my sight."</p>
-      <p class="gallery-sub">(Go ahead, tap them… 😉)</p>
-      <p class="gallery-scroll">Scroll down for something special ↓</p>
-    </div>
-
-    <!-- HEART FRAME GALLERY -->
-    <div class="heart-frame-layout">
-      <div class="center-photo" onclick="openLightbox(this, true)">
-         <img src="https://via.placeholder.com/300" alt="Center Photo">
-      </div>
-      <div class="frame-photo" onclick="openLightbox(this)"><img src="https://via.placeholder.com/150" alt="Photo 1"></div>
-      <div class="frame-photo" onclick="openLightbox(this)"><img src="https://via.placeholder.com/150" alt="Photo 2"></div>
-      <div class="frame-photo" onclick="openLightbox(this)"><img src="https://via.placeholder.com/150" alt="Photo 3"></div>
-      <div class="frame-photo" onclick="openLightbox(this)"><img src="https://via.placeholder.com/150" alt="Photo 4"></div>
-      <div class="frame-photo" onclick="openLightbox(this)"><img src="https://via.placeholder.com/150" alt="Photo 5"></div>
-      <div class="frame-photo" onclick="openLightbox(this)"><img src="https://via.placeholder.com/150" alt="Photo 6"></div>
-      <div class="frame-photo" onclick="openLightbox(this)"><img src="https://via.placeholder.com/150" alt="Photo 7"></div>
-      <div class="frame-photo" onclick="openLightbox(this)"><img src="https://via.placeholder.com/150" alt="Photo 8"></div>
-      <div class="frame-photo" onclick="openLightbox(this)"><img src="https://via.placeholder.com/150" alt="Photo 9"></div>
-      <div class="frame-photo" onclick="openLightbox(this)"><img src="https://via.placeholder.com/150" alt="Photo 10"></div>
-      <div class="frame-photo" onclick="openLightbox(this)"><img src="https://via.placeholder.com/150" alt="Photo 11"></div>
-      <div class="frame-photo" onclick="openLightbox(this)"><img src="https://via.placeholder.com/150" alt="Photo 12"></div>
-      <div class="frame-photo" onclick="openLightbox(this)"><img src="https://via.placeholder.com/150" alt="Photo 13"></div>
-      <div class="frame-photo" onclick="openLightbox(this)"><img src="https://via.placeholder.com/150" alt="Photo 14"></div>
-      <div class="frame-photo" onclick="openLightbox(this)"><img src="https://via.placeholder.com/150" alt="Photo 15"></div>
-      <div class="frame-photo" onclick="openLightbox(this)"><img src="https://via.placeholder.com/150" alt="Photo 16"></div>
-      <div class="frame-photo" onclick="openLightbox(this)"><img src="https://via.placeholder.com/150" alt="Photo 17"></div>
-      <div class="frame-photo" onclick="openLightbox(this)"><img src="https://via.placeholder.com/150" alt="Photo 18"></div>
-      <div class="frame-photo" onclick="openLightbox(this)"><img src="https://via.placeholder.com/150" alt="Photo 19"></div>
-    </div>
-     
-    <!-- SPECIAL NOTE CARD -->
-    <div class="special-note">
-      <div class="note-card">
-        <div class="note-card-inner">
-          <h2 class="note-title burmese-text">စုစုသို့ 🤍</h2>
-          <div class="note-body burmese-text">
-            <p>စုစု 🤍</p>
-            <p>ကျွန်တော့်ရဲ့ လက်ဆောင်တွေနဲ့ ဒီ Website လေးက စုစုအတွက် စိတ်အနှောင့်အယှက် တစ်စုံတစ်ရာ မဖြစ်စေဖို့ မျှော်လင့်ပါတယ်။ စုစုရဲ့ အသက် (၂၀) ပြည့် မွေးနေ့မှာ ကျွန်တော့်ရဲ့ တတ်နိုင်တဲ့ နည်းလမ်းလေးနဲ့ အမှတ်တရတစ်ခု ဖြစ်စေချင်ရုံ သက်သက်ပါ။</p>
-            <p>"မြကျေးရုံတို့ ပုဂံရွှေပြည်" ကို ရွေးဖြစ်ခဲ့တာက... စုစုက "လက်ကျန်လရောင်" ကို ကြိုက်တယ်ဆိုတော့ ဆူးပုတ်နဲ့ မြကျေးတို့ကိုလည်း အတူတူ ထပ်ပြီး တွေ့ချင်ဦးမယ် ထင်လို့ပါ။ ဒီစာအုပ်လေးက စုစု အချိန်ပေးပြီး ဖတ်ရတာ တန်စေမယ့် အရာလေး ဖြစ်လာမယ်လို့ တကယ်ပဲ မျှော်လင့်မိပါတယ်။</p>
-            <p>စုစုရဲ့ ခဲပန်းချီ ပုံတူလေးကတော့ စုစု အံ့သြသွားအောင် ပြင်ဆင်ပေးထားတဲ့ လက်ဆောင်လေးတစ်ခုပါ။ စုစု ကြိုက်မယ်လို့ မျှော်လင့်သလို... အနည်းဆုံးတော့ အဲ့ဒါလေးကို မြင်တဲ့အခါ စုစု ခဏလောက်ဖြစ်ဖြစ် ပြုံးမိသွားမယ်ဆိုရင်ပဲ ကျွန်တော် ကျေနပ်ပါပြီ။</p>
-            <p>လက်ဆောင်တွေ ပို့ပေးခဲ့တဲ့ ပုံစံနဲ့ အချိန်က ပုံမှန်မဟုတ်ဘဲ ထူးဆန်းနေခဲ့ရင်လည်း တောင်းပန်ပါတယ်နော်။ လက်ဆောင်တွေကို စုစုလက်ခံနိုင်မယ့် တခြား နည်းလမ်းရှာမတွေ့လို့ပါ။ ဒီနေ့ဖြေခဲ့တဲ့ MET စာမေးပွဲလည်း အဆင်ပြေပြေနဲ့ ယုံကြည်မှုအပြည့်နဲ့ ဖြေနိုင်ခဲ့မယ်လို့ မျှော်လင့်ပါတယ်။</p>
-            <p>ဒီလက်ဆောင်တွေနဲ့ Website အပေါ်မှာလည်း ဘာမှ ဝန်ထုပ်ဝန်ပိုး မဖြစ်ပါနဲ့နော်။ စုစုဆီက တစ်စုံတစ်ခုကို ပြန်ပြီး မျှော်လင့်ပြီး လုပ်ထားတာ မဟုတ်လို့ပါ။ ကျွန်တော့်ရဲ့ အဓိက ရည်ရွယ်ချက်က... တစ်နေ့နေ့ စုစု အသက်ကြီးသွားတဲ့အခါ အတိတ်ကို ပြန်တွေးမိရင် "ငါ့ရဲ့ အသက် (၂၀) ပြည့် မွေးနေ့မှာ ဒီလို အမှတ်တရတွေ၊ လက်ဆောင်တွေ ရခဲ့ဖူးတယ်" ဆိုတဲ့ အတွေးလေး အမှတ်တမဲ့ ဝင်လာရုံနဲ့တင် ကျွန်တော် ကျေနပ်ပါပြီ။</p>
-            <p>တစ်ခါထပ်ပြီး အသက် (၂၀) ပြည့် မွေးနေ့မှာ ပျော်ရွှင်ပါစေ စုစု။ စုစုဟာ ပျော်ရွှင်မှုတွေ၊ အောင်မြင်မှုတွေနဲ့ လှပတဲ့ အမှတ်တရတွေ ပြည့်နှက်နေမယ့် နှစ်တစ်နှစ်၊ ဘဝတစ်ခုကို ပိုင်ဆိုင်ထိုက်သူပါ။</p>
-            <p class="note-final">ပြီးတော့... နောက်ဆုံး မွေးနေ့လက်ဆောင်လေး အနေနဲ့... တကယ်လို့ စုစုရဲ့ နှလုံးသားမှာ ပိုင်ရှင် မရှိသေးဘူးဆိုရင်တော့... ကျွန်တော့်ရဲ့ နှလုံးသားကို စုစုဆီ အပ်နှင်းချင်ပါတယ် 🤍</p>
-          </div>
+            <div class="gate-ornament bottom">✦</div>
         </div>
-      </div>
+    </section>
+
+    <!-- ============================================================ -->
+    <!-- COUNTDOWN SCREEN -->
+    <!-- ============================================================ -->
+    <section id="countdown-screen" class="screen">
+        <div class="cd-bg-layer"></div>
+        <div class="cd-content">
+            <div class="cd-eyebrow">counting down to</div>
+            <h1 class="cd-title">March 7, 2026</h1>
+            <p class="cd-sub">Something beautiful is on its way ✨</p>
+
+            <div class="timer">
+                <div class="time-box">
+                    <span id="days">00</span>
+                    <small>Days</small>
+                </div>
+                <div class="time-sep">:</div>
+                <div class="time-box">
+                    <span id="hours">00</span>
+                    <small>Hours</small>
+                </div>
+                <div class="time-sep">:</div>
+                <div class="time-box">
+                    <span id="minutes">00</span>
+                    <small>Minutes</small>
+                </div>
+                <div class="time-sep">:</div>
+                <div class="time-box">
+                    <span id="seconds">00</span>
+                    <small>Seconds</small>
+                </div>
+            </div>
+
+            <p class="cd-note">Until the world celebrates you turning 20 💗</p>
+        </div>
+    </section>
+
+    <!-- ============================================================ -->
+    <!-- GIFT SCREEN -->
+    <!-- ============================================================ -->
+    <section id="gift-screen" class="screen">
+        <div class="gift-scene">
+            <p class="gift-hint-top">A little surprise is waiting for you…</p>
+            <div class="gift-box" id="giftBox">
+                <div class="lid">
+                    <div class="lid-ribbon"></div>
+                </div>
+                <div class="box-body">
+                    <div class="ribbon-v"></div>
+                    <div class="ribbon-h"></div>
+                    <div class="box-shine"></div>
+                </div>
+                <div class="bow">
+                    <div class="bow-left"></div>
+                    <div class="bow-right"></div>
+                    <div class="bow-center"></div>
+                </div>
+            </div>
+            <p class="tap-text">Tap to open your surprise 💌</p>
+        </div>
+    </section>
+
+    <!-- ============================================================ -->
+    <!-- MAIN PAGE -->
+    <!-- ============================================================ -->
+    <section id="main-page" class="screen">
+        <audio id="bgMusic" loop>
+            <source src="happy-birthday.mp3" type="audio/mpeg">
+        </audio>
+
+        <div class="main-wrap">
+
+            <!-- HERO TITLE -->
+            <div class="hero-title-section">
+                <div class="hero-eyebrow">✦ March 7, 2026 ✦</div>
+                <h1 class="hero-title">Happy 20th Birthday,<br><em>Su Su</em> 🎂</h1>
+            </div>
+
+            <!-- BIRTHDAY MESSAGE CARD -->
+            <div class="birthday-message">
+                <div class="bm-corner tl"></div>
+                <div class="bm-corner tr"></div>
+                <div class="bm-corner bl"></div>
+                <div class="bm-corner br"></div>
+
+                <h2 class="bm-title">🎂 Happy 20th Birthday, Su Su 🤍</h2>
+                <div class="bm-body burmese-text">
+                    <p>အသက် ၂၀ ပြည့် မွေးနေ့မှာ ပျော်ရွှင်ပါစေနော် စုစု — မွေးနေ့ကစလို့နေ့တိုင်းမှာ ပျော်ရွှင်မှုတွေ၊
+                        လှပတဲ့ အစပြုခြင်း မျှော်လင့်ချက် တွေနဲ့ ပြည့်နေပါစေ။</p>
+                    <br>
+                    <p>
+                        အမြဲတမ်း အေးချမ်းပြီး ကျန်းမာတဲ့ စိတ်နှလုံးကို ပိုင်ဆိုင်နိုင်ပါစေ။<br>
+                        စုစုရဲ့ အိပ်မက်တွေကို အကောင်အထည်ဖော်ဖို့အတွက် ခန္ဓာကိုယ် ကျန်းမာကြံ့ခိုင်ပြီး အားအင် အပြည့်
+                        ရှိပါစေ။<br>
+                        မိဘနှစ်ပါးအတွက် အမြဲတမ်း ချစ်စရာကောင်းတဲ့ အဖိုးတန်တဲ့ ကောင်းချီးမင်္ဂလာသမီးရတနာလေး ဖြစ်ပါစေ။<br>
+                        စုစုအပေါ် စစ်မှန်တဲ့ စေတနာနဲ့ ဂရုစိုက်မယ့် သစ္စာရှိတဲ့ သူငယ်ချင်းကောင်းတွေနဲ့ပဲ
+                        ဆုံတွေ့ရပါစေ။<br>
+                        ဟန်ဆောင်မှုရှိတဲ့ သူငယ်ချင်းတွေနဲ့ အဆိပ်အတောက်ဖြစ်စေတဲ့ relationship တွေ စုစုရဲ့ဘဝထဲကနေ
+                        ဝေးဝေးမှာပဲ ရှိပါစေ။<br>
+                        လူအများအပြားကို ကြင်နာမှုနဲ့ ကူညီပေးနိုင်မယ့် မွန်မြတ်တဲ့ ဆရာဝန်မလေးတစ်ယောက် ဖြစ်လာပါစေ။<br>
+                        နောင်တစ်ချိန်မှာ ကျွမ်းကျင်တဲ့ သားဖွားမီးယပ်အထူးကု ဆရာဝန်ကြီး (OG) တစ်ယောက် ဖြစ်ပါစေ။<br>
+                        လာမယ့် စာမေးပွဲတိုင်းမှာ စိတ်အေးအေးထားပြီး ယုံကြည်မှုအပြည့်နဲ့ ဖြေဆိုနိုင်ပါစေ။<br>
+                        လာမယ့် MET တွေမှာ ကောင်းမွန်စွာဖြေဆိုနိုင်ပြီး အမှတ် 600 ပါစေ။<br>
+                        ဆေးပညာနယ်ပယ်မှာဖြစ်စေ၊ စုစု ဝါသနာပါတဲ့ ဘယ်နယ်ပယ်မှာပဲဖြစ်ဖြစ် စုစုရဲ့ ရည်မှန်းချက်တွေအားလုံး
+                        အောင်မြင်ပါစေ။<br>
+                        စုစုလိုအပ်တဲ့ အချိန်တိုင်းမှာ ကံကောင်းခြင်းတွေက စုစုဆီကို ညင်သာစွာ ရောက်ရှိလာပါစေ။<br>
+                        ကံမကောင်းမှုတွေနဲ့ ဝမ်းနည်းမှုတွေက စုစုရဲ့ ဘဝခရီးကနေ ဝေးဝေးမှာပဲ ရှိပါစေ။<br>
+                        ဘဝရဲ့ စိန်ခေါ်မှုတိုင်းကိုလည်း တည်ငြိမ်တဲ့ ခွန်အားတွေနဲ့ ကျော်ဖြတ်နိုင်ပါစေ။<br>
+                        ကမ္ဘာပတ်ပြီး စုစုသွားချင်တဲ့ နေရာတွေကို အရောက်သွားနိုင်ပါစေ။<br>
+                        စုစုကြိုက်တဲ့ အရသာရှိတဲ့ အစားအသောက်တွေကို စားသောက်ရင်း လွတ်လပ်ပေါ့ပါးစွာ
+                        ပြုံးပျော်နိုင်ပါစေ။<br>
+                        အတွင်းစိတ်ရော အပြင်ပန်းပါ အခုလိုပဲ အမြဲတမ်း သဘာဝအတိုင်း လှပနေပါစေ။<br>
+                        စုစုလုပ်သမျှ အရာတိုင်းမှာ ကိုယ်ပိုင်ပျော်ရွှင်မှုကို လွတ်လပ်စွာ ရွေးချယ်နိုင်ပါစေ။<br>
+                        စုစုချစ်ရတဲ့ မိသားစုနဲ့အတူတူ ပျော်ရွှင်စရာကောင်းတဲ့ နှစ်ပေါင်းများစွာကို အတူဖြတ်သန်းနိုင်ပါစေ။
+                    </p>
+                    <br>
+                    <p>နောက်ဆုံးအနေနဲ့ ဒါကတော့ ကျွန်တော့်ရဲ့ ကိုယ်ပိုင် ဆုတောင်းလေးပါ — စုစုက စုစုရဲ့အခုဖြစ်တည်နေတဲ့
+                        ပုံစံလေးနဲ့တင် ပြည့်စုံလွန်းနေတာမို့ အခုလောလောဆယ်တော့ Single အဖြစ်နဲ့ပဲ လှလှပပ ဆက်ပြီး
+                        တောက်ပနေပေးပါဦးနော် ။</p>
+                </div>
+                <p class="bm-signature burmese-text">မေတ္တာဖြင့်၊<br><em>— စုစုကို အမြဲတမ်းအဆင်ပြေ ပျော်ရွှင်နေစေချင်သူ
+                        🤍</em></p>
+            </div>
+
+            <!-- GALLERY INTRO -->
+            <div class="gallery-intro">
+                <p class="gallery-quote">"Within these frames lie the reasons why my heart skips a beat whenever you're
+                    in my sight."</p>
+                <p class="gallery-sub">(Go ahead, tap them… 😉)</p>
+                <p class="gallery-scroll">Scroll down for something special ↓</p>
+            </div>
+
+            <!-- HEART FRAME GALLERY -->
+            <div class="heart-frame-layout">
+                <div class="center-photo" onclick="openLightbox(this, true)">
+                    <img src="https://via.placeholder.com/300" alt="Center Photo">
+                </div>
+                <div class="frame-photo" onclick="openLightbox(this)"><img src="https://via.placeholder.com/150"
+                        alt="Photo 1"></div>
+                <div class="frame-photo" onclick="openLightbox(this)"><img src="https://via.placeholder.com/150"
+                        alt="Photo 2"></div>
+                <div class="frame-photo" onclick="openLightbox(this)"><img src="https://via.placeholder.com/150"
+                        alt="Photo 3"></div>
+                <div class="frame-photo" onclick="openLightbox(this)"><img src="https://via.placeholder.com/150"
+                        alt="Photo 4"></div>
+                <div class="frame-photo" onclick="openLightbox(this)"><img src="https://via.placeholder.com/150"
+                        alt="Photo 5"></div>
+                <div class="frame-photo" onclick="openLightbox(this)"><img src="https://via.placeholder.com/150"
+                        alt="Photo 6"></div>
+                <div class="frame-photo" onclick="openLightbox(this)"><img src="https://via.placeholder.com/150"
+                        alt="Photo 7"></div>
+                <div class="frame-photo" onclick="openLightbox(this)"><img src="https://via.placeholder.com/150"
+                        alt="Photo 8"></div>
+                <div class="frame-photo" onclick="openLightbox(this)"><img src="https://via.placeholder.com/150"
+                        alt="Photo 9"></div>
+                <div class="frame-photo" onclick="openLightbox(this)"><img src="https://via.placeholder.com/150"
+                        alt="Photo 10"></div>
+                <div class="frame-photo" onclick="openLightbox(this)"><img src="https://via.placeholder.com/150"
+                        alt="Photo 11"></div>
+                <div class="frame-photo" onclick="openLightbox(this)"><img src="https://via.placeholder.com/150"
+                        alt="Photo 12"></div>
+                <div class="frame-photo" onclick="openLightbox(this)"><img src="https://via.placeholder.com/150"
+                        alt="Photo 13"></div>
+                <div class="frame-photo" onclick="openLightbox(this)"><img src="https://via.placeholder.com/150"
+                        alt="Photo 14"></div>
+                <div class="frame-photo" onclick="openLightbox(this)"><img src="https://via.placeholder.com/150"
+                        alt="Photo 15"></div>
+                <div class="frame-photo" onclick="openLightbox(this)"><img src="https://via.placeholder.com/150"
+                        alt="Photo 16"></div>
+                <div class="frame-photo" onclick="openLightbox(this)"><img src="https://via.placeholder.com/150"
+                        alt="Photo 17"></div>
+                <div class="frame-photo" onclick="openLightbox(this)"><img src="https://via.placeholder.com/150"
+                        alt="Photo 18"></div>
+                <div class="frame-photo" onclick="openLightbox(this)"><img src="https://via.placeholder.com/150"
+                        alt="Photo 19"></div>
+            </div>
+
+            <!-- SPECIAL NOTE CARD -->
+            <div class="special-note">
+                <div class="note-card">
+                    <div class="note-card-inner">
+                        <h2 class="note-title burmese-text">စုစုသို့ 🤍</h2>
+                        <div class="note-body burmese-text">
+                            <p>စုစု 🤍</p>
+                            <p>ကျွန်တော့်ရဲ့ လက်ဆောင်တွေနဲ့ ဒီ Website လေးက စုစုအတွက် စိတ်အနှောင့်အယှက် တစ်စုံတစ်ရာ
+                                မဖြစ်စေဖို့ မျှော်လင့်ပါတယ်။ စုစုရဲ့ အသက် (၂၀) ပြည့် မွေးနေ့မှာ ကျွန်တော့်ရဲ့
+                                တတ်နိုင်တဲ့ နည်းလမ်းလေးနဲ့ အမှတ်တရတစ်ခု ဖြစ်စေချင်ရုံ သက်သက်ပါ။</p>
+                            <p>"မြကျေးရုံတို့ ပုဂံရွှေပြည်" ကို ရွေးဖြစ်ခဲ့တာက... စုစုက "လက်ကျန်လရောင်" ကို
+                                ကြိုက်တယ်ဆိုတော့ ဆူးပုတ်နဲ့ မြကျေးတို့ကိုလည်း အတူတူ ထပ်ပြီး တွေ့ချင်ဦးမယ် ထင်လို့ပါ။
+                                ဒီစာအုပ်လေးက စုစု အချိန်ပေးပြီး ဖတ်ရတာ တန်စေမယ့် အရာလေး ဖြစ်လာမယ်လို့ တကယ်ပဲ
+                                မျှော်လင့်မိပါတယ်။</p>
+                            <p>စုစုရဲ့ ခဲပန်းချီ ပုံတူလေးကတော့ စုစု အံ့သြသွားအောင် ပြင်ဆင်ပေးထားတဲ့ လက်ဆောင်လေးတစ်ခုပါ။
+                                စုစု ကြိုက်မယ်လို့ မျှော်လင့်သလို... အနည်းဆုံးတော့ အဲ့ဒါလေးကို မြင်တဲ့အခါ စုစု
+                                ခဏလောက်ဖြစ်ဖြစ် ပြုံးမိသွားမယ်ဆိုရင်ပဲ ကျွန်တော် ကျေနပ်ပါပြီ။</p>
+                            <p>လက်ဆောင်တွေ ပို့ပေးခဲ့တဲ့ ပုံစံနဲ့ အချိန်က ပုံမှန်မဟုတ်ဘဲ ထူးဆန်းနေခဲ့ရင်လည်း
+                                တောင်းပန်ပါတယ်နော်။ လက်ဆောင်တွေကို စုစုလက်ခံနိုင်မယ့် တခြား နည်းလမ်းရှာမတွေ့လို့ပါ။
+                                ဒီနေ့ဖြေခဲ့တဲ့ MET စာမေးပွဲလည်း အဆင်ပြေပြေနဲ့ ယုံကြည်မှုအပြည့်နဲ့ ဖြေနိုင်ခဲ့မယ်လို့
+                                မျှော်လင့်ပါတယ်။</p>
+                            <p>ဒီလက်ဆောင်တွေနဲ့ Website အပေါ်မှာလည်း ဘာမှ ဝန်ထုပ်ဝန်ပိုး မဖြစ်ပါနဲ့နော်။ စုစုဆီက
+                                တစ်စုံတစ်ခုကို ပြန်ပြီး မျှော်လင့်ပြီး လုပ်ထားတာ မဟုတ်လို့ပါ။ ကျွန်တော့်ရဲ့ အဓိက
+                                ရည်ရွယ်ချက်က... တစ်နေ့နေ့ စုစု အသက်ကြီးသွားတဲ့အခါ အတိတ်ကို ပြန်တွေးမိရင် "ငါ့ရဲ့ အသက်
+                                (၂၀) ပြည့် မွေးနေ့မှာ ဒီလို အမှတ်တရတွေ၊ လက်ဆောင်တွေ ရခဲ့ဖူးတယ်" ဆိုတဲ့ အတွေးလေး
+                                အမှတ်တမဲ့ ဝင်လာရုံနဲ့တင် ကျွန်တော် ကျေနပ်ပါပြီ။</p>
+                            <p>တစ်ခါထပ်ပြီး အသက် (၂၀) ပြည့် မွေးနေ့မှာ ပျော်ရွှင်ပါစေ စုစု။ စုစုဟာ ပျော်ရွှင်မှုတွေ၊
+                                အောင်မြင်မှုတွေနဲ့ လှပတဲ့ အမှတ်တရတွေ ပြည့်နှက်နေမယ့် နှစ်တစ်နှစ်၊ ဘဝတစ်ခုကို
+                                ပိုင်ဆိုင်ထိုက်သူပါ။</p>
+                            <p class="note-final">ပြီးတော့... နောက်ဆုံး မွေးနေ့လက်ဆောင်လေး အနေနဲ့... တကယ်လို့ စုစုရဲ့
+                                နှလုံးသားမှာ ပိုင်ရှင် မရှိသေးဘူးဆိုရင်တော့... ကျွန်တော့်ရဲ့ နှလုံးသားကို စုစုဆီ
+                                အပ်နှင်းချင်ပါတယ် 🤍</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- SECRET REVEAL -->
+            <div class="secret-spoiler">
+                <!-- SPOILER BOX 1 — centered -->
+                <button class="spoiler-btn" onclick="toggleSecret()">
+                    Tap here only if you still don't know who I am…<br>
+                    <span>and promise not to send the gifts back or throw them away hehe 🤍</span>
+                </button>
+                <p id="burmese-secret" class="spoiler-text burmese-text">
+                    ကျွန်တော့်ကို block သွားတာ ရက်ပေါင်း 300 တောင် ပြည့်ပီနော်။<br>
+                    ကျွန်တော့်ကို ခုချိန်ထိ ခွင့်မလွှတ်နိုင်သေးဘူးလားဟင် စုစု ﮩـﮩﮩ٨ـ♡ﮩ٨ـﮩﮩ٨ـ
+                </p>
+            </div>
+
+            <!-- FOOTER -->
+            <footer class="page-footer">
+                <p>Made with 🤍 for a very special person</p>
+            </footer>
+
+        </div><!-- /main-wrap -->
+    </section>
+
+    <!-- LIGHTBOX -->
+    <div id="lightbox" class="lightbox" onclick="closeLightbox()">
+        <div class="lightbox-inner">
+            <img id="lightbox-img" src="" alt="Zoomed View">
+            <p id="lightbox-caption" class="lightbox-caption"></p>
+            <button class="lightbox-close" onclick="closeLightbox()">✕</button>
+        </div>
     </div>
 
-    <!-- SECRET REVEAL -->
-    <div class="secret-spoiler">
-      <!-- SPOILER BOX 1 — centered -->
-      <button class="spoiler-btn" onclick="toggleSecret()">
-        Tap here only if you still don't know who I am…<br>
-        <span>and promise not to send the gifts back or throw them away hehe 🤍</span>
-      </button>
-      <p id="burmese-secret" class="spoiler-text burmese-text">
-        ကျွန်တော့်ကို block သွားတာ ရက်ပေါင်း 300 တောင် ပြည့်ပီနော်။<br>
-        ကျွန်တော့်ကို ခုချိန်ထိ ခွင့်မလွှတ်နိုင်သေးဘူးလားဟင် စုစု ﮩـﮩﮩ٨ـ♡ﮩ٨ـﮩﮩ٨ـ
-      </p>
-    </div>
+    <!-- HEARTS CONTAINER -->
+    <div id="hearts-container"></div>
 
-    <!-- ECG SVG — full-page overlay drawing from spoiler1 toward bottom-right corner -->
-    <svg id="ecgSvg" class="ecg-fullpage" viewBox="0 0 1000 400" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none">
-      <!-- flat lead-in, ECG spike, flat lead-out toward bottom-right -->
-      <polyline id="ecgPolyline" class="ecg-line"
-        points="0,60 80,60 120,60 140,20 160,140 175,40 190,60 240,60 310,80 400,110 500,150 600,190 700,230 800,270 870,295 900,295 915,260 930,340 945,280 960,295 1000,295"
-      />
-      <polygon id="ecgArrow" class="ecg-arrow-tip"
-        points="990,285 1010,295 990,305"
-      />
-      <text id="ecgLabel" class="ecg-text-label" x="420" y="130">…still curious? 👀</text>
-    </svg>
-
-    <!-- SPOILER BOX 2 — fixed bottom right -->
-    <div class="spoiler-box2" id="spoilerBox2">
-      <button class="spoiler-btn2 handwriting" onclick="toggleIdentity()">
-        You Are My <em>SU</em> Node 🤍
-      </button>
-      <div id="identity-reveal" class="identity-reveal hidden">
-        <p class="identity-name handwriting">BAKI 73</p>
-        <p class="identity-aka handwriting">(aka)</p>
-        <p class="identity-realname handwriting">Kaung Thant</p>
-      </div>
-    </div>
-
-    <!-- FOOTER -->
-    <footer class="page-footer">
-      <p>Made with 🤍 for a very special person</p>
-    </footer>
-
-  </div><!-- /main-wrap -->
-</section>
-
-<!-- LIGHTBOX -->
-<div id="lightbox" class="lightbox" onclick="closeLightbox()">
-  <div class="lightbox-inner">
-    <img id="lightbox-img" src="" alt="Zoomed View">
-    <p id="lightbox-caption" class="lightbox-caption"></p>
-    <button class="lightbox-close" onclick="closeLightbox()">✕</button>
-  </div>
-</div>
-
-<!-- HEARTS CONTAINER -->
-<div id="hearts-container"></div>
-
-<script src="script.js"></script>
+    <script src="script.js"></script>
 </body>
+
 </html>
