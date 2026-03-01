@@ -266,7 +266,7 @@ function selectVersion(choice) {
             // Delay so countdown screen is visible before auto-advancing
             setTimeout(startCountdown, 800);
         } else {
-            // Relationship version — countdown → gift box → grand entrance → wish → close tab
+            // Relationship version — DIRECTLY to wish page, skip countdown and gift box
             document.body.innerHTML = `
         <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=Padauk:wght@400;700&family=Quicksand:wght@400;500;600&display=swap" rel="stylesheet">
         <style>
@@ -283,34 +283,8 @@ function selectVersion(choice) {
             100% { transform:translateY(110vh) rotate(720deg); opacity:0; }
           }
 
-          /* Screens */
-          .hb-screen { position:fixed; inset:0; display:none; align-items:center; justify-content:center; flex-direction:column; z-index:10; }
-          .hb-screen.active { display:flex; }
-
-          /* ── COUNTDOWN SCREEN ── */
-          #hbCountdown { background:radial-gradient(ellipse at 50% 0%,rgba(232,66,110,0.18) 0%,transparent 65%), linear-gradient(180deg,#fdf0f4 0%,#fff5f8 100%); text-align:center; padding:40px 20px; }
-          .hb-cd-eyebrow { font-family:'Cormorant Garamond',serif; font-size:0.65rem; letter-spacing:5px; text-transform:uppercase; color:#c8687e; margin-bottom:20px; }
-          .hb-cd-title { font-family:'Cormorant Garamond',serif; font-size:clamp(2.4rem,7vw,4.5rem); font-weight:300; color:#2d1a20; line-height:1.1; margin-bottom:14px; }
-          .hb-cd-sub { font-family:'Cormorant Garamond',serif; font-size:1.1rem; font-style:italic; color:#a0606e; margin-bottom:50px; }
-          .hb-timer { display:flex; gap:8px; justify-content:center; align-items:center; flex-wrap:wrap; margin-bottom:50px; }
-          .hb-time-box { background:rgba(232,66,110,0.07); border:1px solid rgba(232,66,110,0.2); border-radius:14px; padding:18px 14px 12px; min-width:80px; text-align:center; }
-          .hb-time-box span { display:block; font-family:'Cormorant Garamond',serif; font-size:2.6rem; font-weight:300; color:#e8426e; line-height:1; }
-          .hb-time-box small { display:block; font-family:'Quicksand',sans-serif; font-size:0.6rem; letter-spacing:3px; text-transform:uppercase; color:#c8688a; margin-top:6px; }
-          .hb-time-sep { font-family:'Cormorant Garamond',serif; font-size:2.2rem; color:#e8426e; opacity:0.4; margin-top:-8px; }
-          .hb-cd-note { font-family:'Cormorant Garamond',serif; font-size:1.05rem; font-style:italic; color:#b07888; }
-
-          /* ── GIFT SCREEN ── */
-          #hbGiftScreen { background:radial-gradient(ellipse at 50% 0%,rgba(232,66,110,0.14) 0%,transparent 65%), linear-gradient(180deg,#fdf0f4 0%,#fff5f8 100%); text-align:center; padding:40px 20px; }
-          .hb-gift-hint { font-family:'Cormorant Garamond',serif; font-size:1.15rem; font-style:italic; color:#a06070; margin-bottom:50px; }
-          #hbGiftBox { font-size:90px; cursor:pointer; display:inline-block; animation:hbFloat 3s ease-in-out infinite; filter:drop-shadow(0 8px 24px rgba(232,66,110,0.25)); transition:transform 0.2s; user-select:none; }
-          #hbGiftBox:hover { transform:scale(1.08); }
-          @keyframes hbFloat { 0%,100%{transform:translateY(0)} 50%{transform:translateY(-14px)} }
-          .hb-tap-hint { font-family:'Cormorant Garamond',serif; font-size:1.2rem; font-style:italic; color:#c8687e; margin-top:36px; animation:hbPulse 2.5s ease-in-out infinite; }
-          @keyframes hbPulse { 0%,100%{opacity:0.6;transform:translateY(0)} 50%{opacity:1;transform:translateY(-6px)} }
-
           /* ── WISH PAGE ── */
-          #hbWish { position:fixed; inset:0; display:none; overflow-y:auto; flex-direction:column; background:linear-gradient(180deg,#fdf0f4 0%,#fff8fa 100%); z-index:20; }
-          #hbWish.active { display:flex; }
+          #hbWish { position:fixed; inset:0; display:flex; overflow-y:auto; flex-direction:column; background:linear-gradient(180deg,#fdf0f4 0%,#fff8fa 100%); z-index:20; }
           .hb-wish-wrap { max-width:700px; margin:0 auto; padding:70px 28px 120px; text-align:center; position:relative; z-index:1; }
           .hb-wish-eyebrow { font-family:'Cormorant Garamond',serif; font-size:0.65rem; letter-spacing:5px; text-transform:uppercase; color:#c8687e; margin-bottom:18px; animation:hbFadeUp 0.8s 0.2s ease both; opacity:0; }
           .hb-wish-title { font-family:'Cormorant Garamond',serif; font-size:clamp(2rem,6vw,3.2rem); font-weight:300; color:#2d1a20; line-height:1.2; margin-bottom:50px; animation:hbFadeUp 0.8s 0.4s ease both; opacity:0; }
@@ -335,33 +309,8 @@ function selectVersion(choice) {
           <source src="happy-birthday.mp3" type="audio/mpeg">
         </audio>
 
-        <!-- SCREEN 1: COUNTDOWN -->
-        <div class="hb-screen active" id="hbCountdown">
-          <p class="hb-cd-eyebrow">counting down to</p>
-          <h1 class="hb-cd-title">March 7, 2026</h1>
-          <p class="hb-cd-sub">A little surprise is waiting for you…</p>
-          <div class="hb-timer">
-            <div class="hb-time-box"><span id="hbDays">00</span><small>Days</small></div>
-            <div class="hb-time-sep">:</div>
-            <div class="hb-time-box"><span id="hbHours">00</span><small>Hours</small></div>
-            <div class="hb-time-sep">:</div>
-            <div class="hb-time-box"><span id="hbMinutes">00</span><small>Minutes</small></div>
-            <div class="hb-time-sep">:</div>
-            <div class="hb-time-box"><span id="hbSeconds">00</span><small>Seconds</small></div>
-          </div>
-          <p class="hb-cd-note">Until she turns 20 ✨</p>
-        </div>
-
-        <!-- SCREEN 2: GIFT BOX -->
-        <div class="hb-screen" id="hbGiftScreen">
-          <p class="hb-gift-hint">A little surprise is waiting for you…</p>
-          <div id="hbGiftBox" onclick="openGift()">🎁</div>
-          <p class="hb-tap-hint">Tap to open your surprise 💌</p>
-        </div>
-
-        <!-- SCREEN 3: WISH PAGE -->
+        <!-- WISH PAGE -->
         <div id="hbWish">
-          <div id="hbParticles2" style="position:fixed;inset:0;pointer-events:none;z-index:0;overflow:hidden;"></div>
           <div class="hb-wish-wrap">
             <p class="hb-wish-eyebrow">✦ March 7, 2026 ✦</p>
             <h1 class="hb-wish-title">Happy 20th Birthday,<br><em>Su Su</em> 🎂</h1>
@@ -388,7 +337,7 @@ function selectVersion(choice) {
                 စုစုကြိုက်တဲ့ အရသာရှိတဲ့ အစားအသောက်တွေကို စားသောက်ရင်း လွတ်လပ်ပေါ့ပါးစွာ ပြုံးပျော်နိုင်ပါစေ။<br>
                 အတွင်းစိတ်ရော အပြင်ပန်းပါ အခုလိုပဲ အမြဲတမ်း သဘာဝအတိုင်း လှပနေပါစေ။<br>
                 စုစုလုပ်သမျှ အရာတိုင်းမှာ ကိုယ်ပိုင်ပျော်ရွှင်မှုကို လွတ်လပ်စွာ ရွေးချယ်နိုင်ပါစေ။<br>
-                စုစုချစ်ရတဲ့ မိသားစုနဲ့အတူတူ ပျော်ရွှင်စရာကောင်းတဲ့ နှစ်ပေါင်းများစွာကို အတူဖြတ်သန်းနိုင်ပါစေ。</p>
+                စုစုချစ်ရတဲ့ မိသားစုနဲ့အတူတူ ပျော်ရွှင်စရာကောင်းတဲ့ နှစ်ပေါင်းများစွာကို အတူဖြတ်သန်းနိုင်ပါစေ။</p>
                 <p>နောက်ဆုံးအနေနဲ့ စုစုရှေ့လျှောက်ဘဝမှာကြုံလာတဲ့ဆင်းရဲခြင်းချမ်းသာခြင်းပျော်ရွှင်ခြင်းဝမ်းနည်းခြင်းတွေအားလုံးကို ချစ်ရတဲ့သူရဲ့လက်ကိုတွဲပြီး အကောင်းဆုံးရင်ဆိုင်နိုင်ပြီး သာယာပျော်ရွှင်ချမ်းမြေ့တဲ့မိသားစု ဘဝလေးတစ်ခုကိုပိုင်ဆိုင်ရပါစေ လို့ ဆုတောင်းပေးလိုက်ပါတယ်နော်။</p>
               </div>
               <p class="hb-signature">မေတ္တာဖြင့်၊<br><em>— စုစုကို အမြဲတမ်းအဆင်ပြေ ပျော်ရွှင်နေစေချင်သူ 🤍</em></p>
@@ -425,50 +374,13 @@ function selectVersion(choice) {
               wrap.appendChild(p);
             }
           }
-          spawnParticles('hbParticles', 40);
+          spawnParticles('hbParticles', 80);
 
-          // ── COUNTDOWN ──
-          const HB_TARGET = new Date("March 7, 2026 00:00:00").getTime();
-          function hbPad(n) { return String(n).padStart(2,'0'); }
-
-          function showGift() {
-            document.getElementById('hbCountdown').classList.remove('active');
-            document.getElementById('hbGiftScreen').classList.add('active');
-          }
-
-          if (HB_TARGET - Date.now() <= 0) {
-            showGift();
-          } else {
-            let hbTimer;
-            function hbTick() {
-              const d = HB_TARGET - Date.now();
-              if (d <= 0) { clearInterval(hbTimer); showGift(); return; }
-              document.getElementById('hbDays').textContent    = hbPad(Math.floor(d/864e5));
-              document.getElementById('hbHours').textContent   = hbPad(Math.floor((d%864e5)/36e5));
-              document.getElementById('hbMinutes').textContent = hbPad(Math.floor((d%36e5)/6e4));
-              document.getElementById('hbSeconds').textContent = hbPad(Math.floor((d%6e4)/1e3));
-            }
-            hbTimer = setInterval(hbTick, 1000);
-            hbTick();
-          }
-
-          // ── OPEN GIFT ──
-          function openGift() {
-            const box = document.getElementById('hbGiftBox');
-            box.style.animation = 'none';
-            box.textContent = '🎊';
-            setTimeout(() => {
-              // Music
+          // Music fade-in
+          setTimeout(() => {
               const music = document.getElementById('hbMusic');
               if (music) { music.volume = 0.5; music.play().catch(()=>{}); }
-              // Show wish
-              document.getElementById('hbGiftScreen').classList.remove('active');
-              const wish = document.getElementById('hbWish');
-              wish.classList.add('active');
-              document.body.style.overflow = 'auto';
-              spawnParticles('hbParticles2', 60);
-            }, 400);
-          }
+          }, 300);
         <\/script>
       `;
         }
