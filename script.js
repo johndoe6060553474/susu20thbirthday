@@ -196,87 +196,12 @@ document.addEventListener("keydown", e => {
 });
 
 // ── SECRET REVEAL ─────────────────────────────────────────────
-let secretRevealed = false;
-
 function toggleSecret() {
     const el = document.getElementById("burmese-secret");
     if (!el) return;
     el.classList.toggle("show");
-
-    // Once opened for the first time, animate the ECG then show box 2
-    if (!secretRevealed && el.classList.contains("show")) {
-        secretRevealed = true;
-        setTimeout(fireEcgAndBox2, 700);
-    }
 }
 
-function fireEcgAndBox2() {
-    const svg = document.getElementById("ecgSvg");
-    const line = document.getElementById("ecgPolyline");
-    const arrow = document.getElementById("ecgArrow");
-    const label = document.getElementById("ecgLabel");
-    const box2 = document.getElementById("spoilerBox2");
-
-    if (!svg || !box2) return;
-
-    // Show SVG overlay
-    svg.classList.add("active");
-
-    // Trigger ECG draw animation next frame
-    requestAnimationFrame(() => {
-        requestAnimationFrame(() => {
-            line.classList.add("draw");
-            label.classList.add("show");
-        });
-    });
-
-    // Arrow tip appears when line finishes
-    setTimeout(() => {
-        arrow.classList.add("show");
-    }, 2100);
-
-    // Box 2 fades in
-    setTimeout(() => {
-        box2.classList.add("active");
-        requestAnimationFrame(() => {
-            requestAnimationFrame(() => {
-                box2.classList.add("visible");
-            });
-        });
-    }, 2400);
-}
-
-let identityRevealed = false;
-
-function toggleIdentity() {
-    const reveal = document.getElementById("identity-reveal");
-    if (!reveal) return;
-
-    if (!identityRevealed) {
-        // First tap: show the name card
-        reveal.classList.remove("hidden");
-        identityRevealed = true;
-    } else {
-        // Second tap: hide ECG and box 2 together
-        const svg = document.getElementById("ecgSvg");
-        if (svg) {
-            svg.style.transition = "opacity 0.6s ease";
-            svg.style.opacity = "0";
-            setTimeout(() => svg.classList.remove("active"), 650);
-        }
-        const box2 = document.getElementById("spoilerBox2");
-        if (box2) {
-            box2.style.transition = "opacity 0.6s ease";
-            box2.style.opacity = "0";
-            setTimeout(() => {
-                box2.classList.remove("active", "visible");
-                box2.style.opacity = "";
-                document.getElementById("identity-reveal").classList.add("hidden");
-            }, 650);
-        }
-        identityRevealed = false;
-    }
-}
 
 // ── ENTRY GATE ───────────────────────────────────────────────
 function confirmIdentity(answer) {
@@ -445,16 +370,16 @@ function selectVersion(choice) {
               <div class="hb-corner bl"></div><div class="hb-corner br"></div>
               <p class="hb-card-title">🎂 Happy 20th Birthday, Su Su 🤍</p>
               <div class="hb-body">
-                <p>အသက် ၂၀ ပြည့် မွေးနေ့မှာ ပျော်ရွှင်ပါစေနော် စုစု — မွေးနေ့ကစလို့ နေ့တိုင်းမှာ ပျော်ရွှင်မှုတွေ၊ လှပတဲ့ အစပြုခြင်း မျှော်လင့်ချက်တွေနဲ့ ပြည့်နေပါစေ။</p>
+                <p>အသက် ၂၀ ပြည့် မွေးနေ့မှာ ပျော်ရွှင်ပါစေနော် စုစု — မွေးနေ့ကစလို့နေ့တိုင်းမှာ ပျော်ရွှင်မှုတွေ၊ လှပတဲ့ အစပြုခြင်း မျှော်လင့်ချက် တွေနဲ့ ပြည့်နေပါစေ။</p>
                 <p>အမြဲတမ်း အေးချမ်းပြီး ကျန်းမာတဲ့ စိတ်နှလုံးကို ပိုင်ဆိုင်နိုင်ပါစေ။<br>
-                စုစုရဲ့ အိပ်မက်တွေကို အကောင်အထည်ဖော်ဖို့အတွက် ခန္ဓာကိုယ် ကျန်းမာကြံ့ခိုင်ပြီး အားအင်အပြည့် ရှိပါစေ။<br>
-                မိဘနှစ်ပါးအတွက် အမြဲတမ်း ချစ်စရာကောင်းတဲ့ အဖိုးတန်တဲ့ ကောင်းချီးမင်္ဂလာ သမီးရတနာလေး ဖြစ်ပါစေ။<br>
+                စုစုရဲ့ အိပ်မက်တွေကို အကောင်အထည်ဖော်ဖို့အတွက် ခန္ဓာကိုယ် ကျန်းမာကြံ့ခိုင်ပြီး အားအင် အပြည့် ရှိပါစေ။<br>
+                မိဘနှစ်ပါးအတွက် အမြဲတမ်း ချစ်စရာကောင်းတဲ့ အဖိုးတန်တဲ့ ကောင်းချီးမင်္ဂလာသမီးရတနာလေး ဖြစ်ပါစေ။<br>
                 စုစုအပေါ် စစ်မှန်တဲ့ စေတနာနဲ့ ဂရုစိုက်မယ့် သစ္စာရှိတဲ့ သူငယ်ချင်းကောင်းတွေနဲ့ပဲ ဆုံတွေ့ရပါစေ။<br>
                 ဟန်ဆောင်မှုရှိတဲ့ သူငယ်ချင်းတွေနဲ့ အဆိပ်အတောက်ဖြစ်စေတဲ့ relationship တွေ စုစုရဲ့ဘဝထဲကနေ ဝေးဝေးမှာပဲ ရှိပါစေ။<br>
                 လူအများအပြားကို ကြင်နာမှုနဲ့ ကူညီပေးနိုင်မယ့် မွန်မြတ်တဲ့ ဆရာဝန်မလေးတစ်ယောက် ဖြစ်လာပါစေ။<br>
                 နောင်တစ်ချိန်မှာ ကျွမ်းကျင်တဲ့ သားဖွားမီးယပ်အထူးကု ဆရာဝန်ကြီး (OG) တစ်ယောက် ဖြစ်ပါစေ။<br>
                 လာမယ့် စာမေးပွဲတိုင်းမှာ စိတ်အေးအေးထားပြီး ယုံကြည်မှုအပြည့်နဲ့ ဖြေဆိုနိုင်ပါစေ။<br>
-                လာမယ့် MET တွေမှာ ကောင်းမွန်စွာဖြေဆိုနိုင်ပြီး အမှတ် 600 ရပါစေ။<br>
+                လာမယ့် MET တွေမှာ ကောင်းမွန်စွာဖြေဆိုနိုင်ပြီး အမှတ် 600 ပါစေ။<br>
                 ဆေးပညာနယ်ပယ်မှာဖြစ်စေ၊ စုစု ဝါသနာပါတဲ့ ဘယ်နယ်ပယ်မှာပဲဖြစ်ဖြစ် စုစုရဲ့ ရည်မှန်းချက်တွေအားလုံး အောင်မြင်ပါစေ။<br>
                 စုစုလိုအပ်တဲ့ အချိန်တိုင်းမှာ ကံကောင်းခြင်းတွေက စုစုဆီကို ညင်သာစွာ ရောက်ရှိလာပါစေ။<br>
                 ကံမကောင်းမှုတွေနဲ့ ဝမ်းနည်းမှုတွေက စုစုရဲ့ ဘဝခရီးကနေ ဝေးဝေးမှာပဲ ရှိပါစေ။<br>
@@ -463,10 +388,10 @@ function selectVersion(choice) {
                 စုစုကြိုက်တဲ့ အရသာရှိတဲ့ အစားအသောက်တွေကို စားသောက်ရင်း လွတ်လပ်ပေါ့ပါးစွာ ပြုံးပျော်နိုင်ပါစေ။<br>
                 အတွင်းစိတ်ရော အပြင်ပန်းပါ အခုလိုပဲ အမြဲတမ်း သဘာဝအတိုင်း လှပနေပါစေ။<br>
                 စုစုလုပ်သမျှ အရာတိုင်းမှာ ကိုယ်ပိုင်ပျော်ရွှင်မှုကို လွတ်လပ်စွာ ရွေးချယ်နိုင်ပါစေ။<br>
-                စုစုချစ်ရတဲ့ မိသားစုနဲ့အတူတူ ပျော်ရွှင်စရာကောင်းတဲ့ နှစ်ပေါင်းများစွာကို အတူဖြတ်သန်းနိုင်ပါစေ။</p>
-                <p>နောက်ဆုံးအနေနဲ့ စုစုရှေ့လျှောက်ဘဝမှာ ကြုံလာတဲ့ ဆင်းရဲခြင်း ချမ်းသာခြင်း ပျော်ရွှင်ခြင်း ဝမ်းနည်းခြင်းတွေအားလုံးကို ချစ်ရတဲ့သူရဲ့ လက်ကိုတွဲပြီး အကောင်းဆုံး ရင်ဆိုင်နိုင်ပြီး သာယာပျော်ရွှင်ချမ်းမြေ့တဲ့ မိသားစုဘဝလေးတစ်ခုကို ပိုင်ဆိုင်ရပါစေလို့ ဆုတောင်းပေးလိုက်ပါတယ်နော်။</p>
+                စုစုချစ်ရတဲ့ မိသားစုနဲ့အတူတူ ပျော်ရွှင်စရာကောင်းတဲ့ နှစ်ပေါင်းများစွာကို အတူဖြတ်သန်းနိုင်ပါစေ。</p>
+                <p>နောက်ဆုံးအနေနဲ့ စုစုရှေ့လျှောက်ဘဝမှာကြုံလာတဲ့ဆင်းရဲခြင်းချမ်းသာခြင်းပျော်ရွှင်ခြင်းဝမ်းနည်းခြင်းတွေအားလုံးကို ချစ်ရတဲ့သူရဲ့လက်ကိုတွဲပြီး အကောင်းဆုံးရင်ဆိုင်နိုင်ပြီး သာယာပျော်ရွှင်ချမ်းမြေ့တဲ့မိသားစု ဘဝလေးတစ်ခုကိုပိုင်ဆိုင်ရပါစေ လို့ ဆုတောင်းပေးလိုက်ပါတယ်နော်။</p>
               </div>
-              <p class="hb-signature">မေတ္တာဖြင့်၊<br><em>— စုစုကို အမြဲတမ်း အဆင်ပြေ ပျော်ရွှင်နေစေချင်သူ 🤍</em></p>
+              <p class="hb-signature">မေတ္တာဖြင့်၊<br><em>— စုစုကို အမြဲတမ်းအဆင်ပြေ ပျော်ရွှင်နေစေချင်သူ 🤍</em></p>
             </div>
             <button class="hb-close-btn" onclick="window.close()">Close the Tab</button>
           </div>
