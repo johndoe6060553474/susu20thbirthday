@@ -260,27 +260,36 @@ document.getElementById("rollInput")?.addEventListener("keydown", e => {
 });
 
 // ── DOT-MATRIX "20" BUILDER ───────────────────────────────────
-// 5-row × 9-col grid: cols 0-3 = digit "2", col 4 = gap, cols 5-8 = digit "0"
-// 1 = lit (photo), 0 = empty spacer
+// Exactly 20 lit cells total: "2" = 11 cells, "0" = 9 cells
+// Grid: 5 rows × 9 cols  (cols 0-3 = "2", col 4 = gap, cols 5-8 = "0")
 (function buildTwenty() {
+    // "2" — 11 lit cells
     const DIGIT_2 = [
-        [1, 1, 1, 1],
-        [0, 0, 0, 1],
-        [1, 1, 1, 1],
-        [1, 0, 0, 0],
-        [1, 1, 1, 1],
-    ];
-    const DIGIT_0 = [
-        [1, 1, 1, 1],
-        [1, 0, 0, 1],
-        [1, 0, 0, 1],
-        [1, 0, 0, 1],
-        [1, 1, 1, 1],
+        [1, 1, 1, 0],  // ███.
+        [0, 0, 1, 0],  // ..█.
+        [0, 1, 1, 0],  // .██.
+        [1, 0, 0, 0],  // █...
+        [1, 1, 1, 1],  // ████  → 11 cells
     ];
 
-    // Collect all lit positions in order (left-to-right, top-to-bottom)
-    // so we can assign photos sequentially
-    const litPositions = []; // {row, col, digit}
+    // "0" — 9 lit cells
+    const DIGIT_0 = [
+        [0, 1, 1, 0],  // .██.
+        [1, 0, 1, 0],  // █.█.
+        [1, 0, 1, 0],  // █.█.
+        [1, 0, 1, 0],  // █.█.
+        [0, 1, 0, 0],  // .█..  → 9 cells
+    ];
+    // Total: 11 + 9 = 20 ✓
+
+    const photos = [
+        "photos.gitkeep/center.jpg.png",
+        ...Array.from({ length: 19 }, (_, i) => `photos.gitkeep/photo${i + 1}.jpg.jpg`)
+    ];
+
+    // Collect lit positions row-by-row, left "2" first then right "0"
+    // so photos fill naturally left-to-right across both digits per row
+    const litPositions = [];
     for (let r = 0; r < 5; r++) {
         for (let c = 0; c < 4; c++) {
             if (DIGIT_2[r][c]) litPositions.push({ r, c });
@@ -290,16 +299,10 @@ document.getElementById("rollInput")?.addEventListener("keydown", e => {
         }
     }
 
-    // All 20 photos (photo1..photo19 + center)
-    const photos = [
-        "photos.gitkeep/center.jpg.png",
-        ...Array.from({ length: 19 }, (_, i) => `photos.gitkeep/photo${i + 1}.jpg.jpg`)
-    ];
-
-    // Build a map: "r,c" → photoSrc
+    // Map "r,c" → photo src (one unique photo per lit cell)
     const photoMap = {};
     litPositions.forEach((pos, idx) => {
-        photoMap[`${pos.r},${pos.c}`] = photos[idx % photos.length];
+        photoMap[`${pos.r},${pos.c}`] = photos[idx];
     });
 
     const grid = document.getElementById("twentyGrid");
@@ -314,8 +317,7 @@ document.getElementById("rollInput")?.addEventListener("keydown", e => {
             cell.className = "bday-dot";
 
             if (c === 4) {
-                // gap column — always empty
-                cell.classList.add("empty");
+                cell.classList.add("empty"); // gap column
             } else {
                 const key = `${r},${c}`;
                 if (photoMap[key]) {
@@ -323,11 +325,8 @@ document.getElementById("rollInput")?.addEventListener("keydown", e => {
                     const img = document.createElement("img");
                     img.src = photoMap[key];
                     img.alt = "Photo";
-                    // Check if it's the center photo
                     const isCenter = photoMap[key].includes("center");
-                    cell.addEventListener("click", () => {
-                        openLightbox(cell, isCenter);
-                    });
+                    cell.addEventListener("click", () => openLightbox(cell, isCenter));
                     cell.appendChild(img);
                 } else {
                     cell.classList.add("empty");
