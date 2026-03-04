@@ -325,6 +325,9 @@ document.getElementById("rollInput")?.addEventListener("keydown", e => {
                     const img = document.createElement("img");
                     img.src = photoMap[key];
                     img.alt = "Photo";
+                    // Staggered pop-in: each photo appears slightly after the previous
+                    const litIndex = litPositions.findIndex(p => p.r === r && p.c === c);
+                    cell.style.animationDelay = `${0.3 + litIndex * 0.06}s`;
                     const isCenter = photoMap[key].includes("center");
                     cell.addEventListener("click", () => openLightbox(cell, isCenter));
                     cell.appendChild(img);
