@@ -171,95 +171,23 @@
                         🤍</em></p>
             </div>
 
-            <!-- PHOTO TEXT GALLERY: HAPPY 20TH BIRTHDAY -->
-            <div class="photo-text-gallery">
-                <!-- Row 1: H A P P Y (5 photos) -->
-                <div class="ptg-row">
-                    <div class="ptg-letter-group">
-                        <div class="ptg-photo" onclick="openLightbox(this)"><img src="photos.gitkeep/photo1.jpg.jpg" alt="Photo 1"></div>
-                        <div class="ptg-letter">H</div>
-                    </div>
-                    <div class="ptg-letter-group">
-                        <div class="ptg-photo" onclick="openLightbox(this)"><img src="photos.gitkeep/photo2.jpg.jpg" alt="Photo 2"></div>
-                        <div class="ptg-letter">A</div>
-                    </div>
-                    <div class="ptg-letter-group">
-                        <div class="ptg-photo" onclick="openLightbox(this)"><img src="photos.gitkeep/photo3.jpg.jpg" alt="Photo 3"></div>
-                        <div class="ptg-letter">P</div>
-                    </div>
-                    <div class="ptg-letter-group">
-                        <div class="ptg-photo" onclick="openLightbox(this)"><img src="photos.gitkeep/photo4.jpg.jpg" alt="Photo 4"></div>
-                        <div class="ptg-letter">P</div>
-                    </div>
-                    <div class="ptg-letter-group">
-                        <div class="ptg-photo" onclick="openLightbox(this)"><img src="photos.gitkeep/photo5.jpg.jpg" alt="Photo 5"></div>
-                        <div class="ptg-letter">Y</div>
-                    </div>
+            <!-- BIRTHDAY TEXT + PHOTO MOSAIC -->
+            <div class="bday-display">
+
+                <!-- HAPPY — pure decorative text -->
+                <div class="bday-word bday-happy">HAPPY</div>
+
+                <!-- 20 — formed by photos in a dot-matrix grid -->
+                <!-- The digit "2": positions marked with data-on="true" get a photo -->
+                <!-- The digit "0": positions marked with data-on="true" get a photo -->
+                <!-- Grid is 5 rows × 9 cols (4 for "2", 1 gap, 4 for "0") -->
+                <div class="bday-twenty" id="twentyGrid">
+                    <!-- JS will build this -->
                 </div>
 
-                <!-- Row 2: Big 20 with center photo -->
-                <div class="ptg-row ptg-row-20">
-                    <div class="ptg-big-number">
-                        <div class="ptg-photo ptg-photo-large" onclick="openLightbox(this, true)"><img src="photos.gitkeep/center.jpg.png" alt="Center Photo"></div>
-                        <div class="ptg-number">20</div>
-                    </div>
-                </div>
+                <!-- TH BIRTHDAY — pure decorative text -->
+                <div class="bday-word bday-th-birthday"><sup>TH</sup> BIRTHDAY</div>
 
-                <!-- Row 3: T H (2 photos) -->
-                <div class="ptg-row">
-                    <div class="ptg-letter-group">
-                        <div class="ptg-photo" onclick="openLightbox(this)"><img src="photos.gitkeep/photo6.jpg.jpg" alt="Photo 6"></div>
-                        <div class="ptg-letter">T</div>
-                    </div>
-                    <div class="ptg-letter-group">
-                        <div class="ptg-photo" onclick="openLightbox(this)"><img src="photos.gitkeep/photo7.jpg.jpg" alt="Photo 7"></div>
-                        <div class="ptg-letter">H</div>
-                    </div>
-                </div>
-
-                <!-- Row 4: B I R T H D A Y (8 photos) -->
-                <div class="ptg-row ptg-row-birthday">
-                    <div class="ptg-letter-group">
-                        <div class="ptg-photo" onclick="openLightbox(this)"><img src="photos.gitkeep/photo8.jpg.jpg" alt="Photo 8"></div>
-                        <div class="ptg-letter">B</div>
-                    </div>
-                    <div class="ptg-letter-group">
-                        <div class="ptg-photo" onclick="openLightbox(this)"><img src="photos.gitkeep/photo9.jpg.jpg" alt="Photo 9"></div>
-                        <div class="ptg-letter">I</div>
-                    </div>
-                    <div class="ptg-letter-group">
-                        <div class="ptg-photo" onclick="openLightbox(this)"><img src="photos.gitkeep/photo10.jpg.jpg" alt="Photo 10"></div>
-                        <div class="ptg-letter">R</div>
-                    </div>
-                    <div class="ptg-letter-group">
-                        <div class="ptg-photo" onclick="openLightbox(this)"><img src="photos.gitkeep/photo11.jpg.jpg" alt="Photo 11"></div>
-                        <div class="ptg-letter">T</div>
-                    </div>
-                    <div class="ptg-letter-group">
-                        <div class="ptg-photo" onclick="openLightbox(this)"><img src="photos.gitkeep/photo12.jpg.jpg" alt="Photo 12"></div>
-                        <div class="ptg-letter">H</div>
-                    </div>
-                    <div class="ptg-letter-group">
-                        <div class="ptg-photo" onclick="openLightbox(this)"><img src="photos.gitkeep/photo13.jpg.jpg" alt="Photo 13"></div>
-                        <div class="ptg-letter">D</div>
-                    </div>
-                    <div class="ptg-letter-group">
-                        <div class="ptg-photo" onclick="openLightbox(this)"><img src="photos.gitkeep/photo14.jpg.jpg" alt="Photo 14"></div>
-                        <div class="ptg-letter">A</div>
-                    </div>
-                    <div class="ptg-letter-group">
-                        <div class="ptg-photo" onclick="openLightbox(this)"><img src="photos.gitkeep/photo15.jpg.jpg" alt="Photo 15"></div>
-                        <div class="ptg-letter">Y</div>
-                    </div>
-                </div>
-
-                <!-- Extra photos row (photos 16-19 + center repeated as accent) -->
-                <div class="ptg-row ptg-row-extra">
-                    <div class="ptg-photo ptg-photo-accent" onclick="openLightbox(this)"><img src="photos.gitkeep/photo16.jpg.jpg" alt="Photo 16"></div>
-                    <div class="ptg-photo ptg-photo-accent" onclick="openLightbox(this)"><img src="photos.gitkeep/photo17.jpg.jpg" alt="Photo 17"></div>
-                    <div class="ptg-photo ptg-photo-accent" onclick="openLightbox(this)"><img src="photos.gitkeep/photo18.jpg.jpg" alt="Photo 18"></div>
-                    <div class="ptg-photo ptg-photo-accent" onclick="openLightbox(this)"><img src="photos.gitkeep/photo19.jpg.jpg" alt="Photo 19"></div>
-                </div>
             </div>
 
             <!-- SPECIAL NOTE CARD -->
