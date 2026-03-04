@@ -258,3 +258,83 @@ function verifyRoll() {
 document.getElementById("rollInput")?.addEventListener("keydown", e => {
     if (e.key === "Enter") verifyRoll();
 });
+
+// ── DOT-MATRIX "20" BUILDER ───────────────────────────────────
+// 5-row × 9-col grid: cols 0-3 = digit "2", col 4 = gap, cols 5-8 = digit "0"
+// 1 = lit (photo), 0 = empty spacer
+(function buildTwenty() {
+    const DIGIT_2 = [
+        [1, 1, 1, 1],
+        [0, 0, 0, 1],
+        [1, 1, 1, 1],
+        [1, 0, 0, 0],
+        [1, 1, 1, 1],
+    ];
+    const DIGIT_0 = [
+        [1, 1, 1, 1],
+        [1, 0, 0, 1],
+        [1, 0, 0, 1],
+        [1, 0, 0, 1],
+        [1, 1, 1, 1],
+    ];
+
+    // Collect all lit positions in order (left-to-right, top-to-bottom)
+    // so we can assign photos sequentially
+    const litPositions = []; // {row, col, digit}
+    for (let r = 0; r < 5; r++) {
+        for (let c = 0; c < 4; c++) {
+            if (DIGIT_2[r][c]) litPositions.push({ r, c });
+        }
+        for (let c = 0; c < 4; c++) {
+            if (DIGIT_0[r][c]) litPositions.push({ r, c: c + 5 });
+        }
+    }
+
+    // All 20 photos (photo1..photo19 + center)
+    const photos = [
+        "photos.gitkeep/center.jpg.png",
+        ...Array.from({ length: 19 }, (_, i) => `photos.gitkeep/photo${i + 1}.jpg.jpg`)
+    ];
+
+    // Build a map: "r,c" → photoSrc
+    const photoMap = {};
+    litPositions.forEach((pos, idx) => {
+        photoMap[`${pos.r},${pos.c}`] = photos[idx % photos.length];
+    });
+
+    const grid = document.getElementById("twentyGrid");
+    if (!grid) return;
+
+    for (let r = 0; r < 5; r++) {
+        const rowEl = document.createElement("div");
+        rowEl.className = "bday-twenty-row";
+
+        for (let c = 0; c < 9; c++) {
+            const cell = document.createElement("div");
+            cell.className = "bday-dot";
+
+            if (c === 4) {
+                // gap column — always empty
+                cell.classList.add("empty");
+            } else {
+                const key = `${r},${c}`;
+                if (photoMap[key]) {
+                    cell.classList.add("lit");
+                    const img = document.createElement("img");
+                    img.src = photoMap[key];
+                    img.alt = "Photo";
+                    // Check if it's the center photo
+                    const isCenter = photoMap[key].includes("center");
+                    cell.addEventListener("click", () => {
+                        openLightbox(cell, isCenter);
+                    });
+                    cell.appendChild(img);
+                } else {
+                    cell.classList.add("empty");
+                }
+            }
+            rowEl.appendChild(cell);
+        }
+        grid.appendChild(rowEl);
+    }
+})();
